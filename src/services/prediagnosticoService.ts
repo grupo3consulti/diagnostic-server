@@ -1,11 +1,11 @@
 import OpenAI from 'openai';
 import MedicoService from './medicoService';
 import parametroDetService from './parametroDetService';
-
+import enviroment  from '../config/enviroment';
 
 class PrediagnosticoService {
   private openai: OpenAI;
-  private apiKey = process.env.OPENAI_API_KEY;
+  private apiKey = enviroment.OPENAI_API_KEY;
 
   constructor() {
     if (!this.apiKey) {

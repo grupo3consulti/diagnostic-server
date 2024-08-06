@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
+import enviroment  from '../config/enviroment';
 
-const databaseUrl = 'postgresql://bksoft_user:pkxjSM5WM8BnwMzYDBnhmLdkMCq0Eeoo@dpg-cq1bk3mehbks73f6va70-a.oregon-postgres.render.com/bksoft';
+const databaseUrl = `postgresql://${enviroment.DB_USERNAME}:${enviroment.DB_PASSWORD}@${enviroment.DB_HOST}/${enviroment.DB_NAME}`;
 
 const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
