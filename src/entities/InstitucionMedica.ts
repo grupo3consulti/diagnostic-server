@@ -11,6 +11,8 @@ interface InstitucionMedicaAttributes {
   usr_modificacion?: string;
   fecha_creacion?: Date;
   fecha_modificacion?: Date;
+  coordenada_x?:string;
+  coordenada_y?:string;
 }
 
 interface InstitucionMedicaCreationAttributes extends Optional<InstitucionMedicaAttributes, 'id_institucion_medica'> {}
@@ -25,6 +27,8 @@ class InstitucionMedica extends Model<InstitucionMedicaAttributes, InstitucionMe
   public usr_modificacion?: string;
   public fecha_creacion?: Date;
   public fecha_modificacion?: Date;
+  public coordenada_x?:string;
+  public coordenada_y?:string;
 }
 
 InstitucionMedica.init({
@@ -60,11 +64,19 @@ InstitucionMedica.init({
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
+  coordenada_x: {
+    type: DataTypes.STRING(100),
+  },
+  coordenada_y: {
+      type: DataTypes.STRING(100),
+  },
 }, {
   sequelize,
   tableName: 'institución_medica',
   timestamps: false,
 });
+
+
 
 export { InstitucionMedica, InstitucionMedicaAttributes, InstitucionMedicaCreationAttributes };
 

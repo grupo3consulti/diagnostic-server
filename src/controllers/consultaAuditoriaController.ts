@@ -35,7 +35,7 @@ class ConsultaAuditoriaController {
 
   async getConsultaAuditoriasByParams(req: Request, res: Response): Promise<Response> {
     try {
-      const consultaAuditorias = await ConsultaAuditoriaService.getConsultaAuditoriasByParams(req.query);
+      const consultaAuditorias = await ConsultaAuditoriaService.getConsultaAuditoriasByParams(req.body);
       return res.status(200).json(consultaAuditorias);
     } catch (error:any) {
       return res.status(500).json({ error: error.message });

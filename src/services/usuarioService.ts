@@ -36,13 +36,13 @@ class UsuarioService {
   }
 
   async authenticateUsuario(email: string, password: string): Promise<any> {
-    const usuario = await usuarioRepository.findOneByParams({ email });
+    const usuario = await usuarioRepository.findOneByParams({ email:email });
 
     if (!usuario) {
       return null;
     }
 
-    const isPasswordValid = await bcrypt.compare(password, usuario.contraseña);
+    const isPasswordValid = password === usuario.contraseña;
     if (!isPasswordValid) {
       return null;
     }

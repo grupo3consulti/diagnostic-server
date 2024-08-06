@@ -86,7 +86,7 @@
       }
     },
     "/usuarios/search": {
-      "get": {
+      "post": {
         "summary": "Search users by parameters",
         "responses": {
           "200": {
@@ -180,7 +180,7 @@
       }
     },
     "/sintomas/search": {
-      "get": {
+      "post": {
         "summary": "Search symptoms by parameters",
         "responses": {
           "200": {
@@ -264,7 +264,7 @@
       }
     },
     "/consultaSintomas/search": {
-      "get": {
+      "post": {
         "summary": "Search symptom consultations by parameters",
         "responses": {
           "200": {
@@ -348,7 +348,7 @@
       }
     },
     "/institucionesMedicas/search": {
-      "get": {
+      "post": {
         "summary": "Search medical institutions by parameters",
         "responses": {
           "200": {
@@ -432,7 +432,7 @@
       }
     },
     "/medicos/search": {
-      "get": {
+      "post": {
         "summary": "Search doctors by parameters",
         "responses": {
           "200": {
@@ -516,7 +516,7 @@
       }
     },
     "/citas/search": {
-      "get": {
+      "post": {
         "summary": "Search appointments by parameters",
         "responses": {
           "200": {
@@ -582,7 +582,7 @@
       }
     },
     "/consultasAuditorias/search": {
-      "get": {
+      "post": {
         "summary": "Search audit consultations by parameters",
         "responses": {
           "200": {
@@ -666,7 +666,7 @@
       }
     },
     "/consultas/search": {
-      "get": {
+      "post": {
         "summary": "Search consultations by parameters",
         "responses": {
           "200": {

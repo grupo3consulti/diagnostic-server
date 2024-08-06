@@ -66,7 +66,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /usuarios/:id`: Obtiene la información de un usuario específico por ID.
 
-- `GET /usuarios/search`: Busca usuarios por parámetros.
+- `POST /usuarios/search`: Busca usuarios por parámetros.
 
 - `PUT /usuarios/:id`: Actualiza la información de un usuario específico por ID.
     ```json
@@ -100,7 +100,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /sintomas/:id`: Obtiene la información de un síntoma específico por ID.
 
-- `GET /sintomas/search`: Busca síntomas por parámetros.
+- `POST /sintomas/search`: Busca síntomas por parámetros.
 
 - `PUT /sintomas/:id`: Actualiza la información de un síntoma específico por ID.
     ```json
@@ -126,7 +126,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /consultaSintomas/:id`: Obtiene la información de una consulta de síntomas específica por ID.
 
-- `GET /consultaSintomas/search`: Busca consultas de síntomas por parámetros.
+- `POST /consultaSintomas/search`: Busca consultas de síntomas por parámetros.
 
 - `PUT /consultaSintomas/:id`: Actualiza la información de una consulta de síntomas específica por ID.
     ```json
@@ -152,7 +152,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /institucionesMedicas/:id`: Obtiene la información de una institución médica específica por ID.
 
-- `GET /institucionesMedicas/search`: Busca instituciones médicas por parámetros.
+- `POST /institucionesMedicas/search`: Busca instituciones médicas por parámetros.
 
 - `PUT /institucionesMedicas/:id`: Actualiza la información de una institución médica específica por ID.
     ```json
@@ -178,7 +178,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /medicos/:id`: Obtiene la información de un médico específico por ID.
 
-- `GET /medicos/search`: Busca médicos por parámetros.
+- `POST /medicos/search`: Busca médicos por parámetros.
 
 - `PUT /medicos/:id`: Actualiza la información de un médico específico por ID.
     ```json
@@ -205,7 +205,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /citas/:id`: Obtiene la información de una cita específica por ID.
 
-- `GET /citas/search`: Busca citas por parámetros.
+- `POST /citas/search`: Busca citas por parámetros.
 
 - `PUT /citas/:id`: Actualiza la información de una cita específica por ID.
     ```json
@@ -233,7 +233,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /consultasAuditorias/:id`: Obtiene la información de una consulta auditoria específica por ID.
 
-- `GET /consultasAuditorias/search`: Busca consultas auditorias por parámetros.
+- `POST /consultasAuditorias/search`: Busca consultas auditorias por parámetros.
 
 - `PUT /consultasAuditorias/:id`: Actualiza la información de una consulta auditoria específica por ID.
     ```json
@@ -259,7 +259,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
 
 - `GET /consultas/:id`: Obtiene la información de una consulta específica por ID.
 
-- `GET /consultas/search`: Busca consultas por parámetros.
+- `POST /consultas/search`: Busca consultas por parámetros.
 
 - `PUT /consultas/:id`: Actualiza la información de una consulta específica por ID.
     ```json

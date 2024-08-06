@@ -35,7 +35,7 @@ class MedicoController {
 
   async getMedicosByParams(req: Request, res: Response): Promise<Response> {
     try {
-      const medicos = await MedicoService.getMedicosByParams(req.query);
+      const medicos = await MedicoService.getMedicosByParams(req.body);
       return res.status(200).json(medicos);
     } catch (error: any) {
       return res.status(500).json({ error: error.message });

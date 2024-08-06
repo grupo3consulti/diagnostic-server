@@ -1,5 +1,7 @@
 import { Sequelize } from 'sequelize';
 import enviroment  from '../config/enviroment';
+import InstitucionMedica from "../entities/InstitucionMedica";
+import Medico from "../entities/Medico";
 
 const databaseUrl = `postgresql://${enviroment.DB_USERNAME}:${enviroment.DB_PASSWORD}@${enviroment.DB_HOST}/${enviroment.DB_NAME}`;
 

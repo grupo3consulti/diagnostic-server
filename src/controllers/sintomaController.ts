@@ -35,7 +35,7 @@ class SintomaController {
 
   async getSintomasByParams(req: Request, res: Response): Promise<Response> {
     try {
-      const sintomas = await SintomaService.getSintomasByParams(req.query);
+      const sintomas = await SintomaService.getSintomasByParams(req.body);
       return res.status(200).json(sintomas);
     } catch (error: any) {
       return res.status(500).json({ error: error.message });

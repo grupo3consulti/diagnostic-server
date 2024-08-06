@@ -1,5 +1,6 @@
 import Medico from '../entities/Medico';
 import { MedicoCreationAttributes } from '../entities/Medico';
+import InstitucionMedica from "../entities/InstitucionMedica";
 
 class MedicoRepository {
   async create(medico: MedicoCreationAttributes): Promise<Medico> {
@@ -16,9 +17,7 @@ class MedicoRepository {
 
   async findByParams(params: Partial<MedicoCreationAttributes>): Promise<Medico[]> {
     return await Medico.findAll({
-      where: {
-        ...params
-      }
+      where: params
     });
   }
 

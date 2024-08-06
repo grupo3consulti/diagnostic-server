@@ -82,6 +82,8 @@ Medico.init({
   timestamps: false,
 });
 
+
+
 export { Medico, MedicoAttributes, MedicoCreationAttributes };
 
 export default Medico;

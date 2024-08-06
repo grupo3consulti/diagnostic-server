@@ -35,7 +35,7 @@ class CitaController {
 
   async getCitasByParams(req: Request, res: Response): Promise<Response> {
     try {
-      const citas = await CitaService.getCitasByParams(req.query);
+      const citas = await CitaService.getCitasByParams(req.body);
       return res.status(200).json(citas);
     } catch (error:any) {
       return res.status(500).json({ error: error.message });

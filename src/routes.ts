@@ -17,7 +17,7 @@ const router = Router();
 router.post('/usuarios', usuarioController.createUsuario);
 router.get('/usuarios', usuarioController.getUsuarios);
 router.get('/usuarios/:id', usuarioController.getUsuarioById);
-router.get('/usuarios/search', usuarioController.getUsuarioByParams);
+router.post('/usuarios/search', usuarioController.getUsuarioByParams);
 router.put('/usuarios/:id', usuarioController.updateUsuario);
 router.delete('/usuarios/:id', usuarioController.deleteUsuario);
 router.post('/usuarios/login', usuarioController.login);
@@ -26,7 +26,7 @@ router.post('/usuarios/login', usuarioController.login);
 router.post('/sintomas', sintomaController.createSintoma);
 router.get('/sintomas', sintomaController.getAllSintomas);
 router.get('/sintomas/:id', sintomaController.getSintomaById);
-router.get('/sintomas/search', sintomaController.getSintomasByParams);
+router.post('/sintomas/search', sintomaController.getSintomasByParams);
 router.put('/sintomas/:id', sintomaController.updateSintoma);
 router.delete('/sintomas/:id', sintomaController.deleteSintoma);
 
@@ -34,7 +34,7 @@ router.delete('/sintomas/:id', sintomaController.deleteSintoma);
 router.post('/consultaSintomas', consultaSintomaController.createConsultaSintoma);
 router.get('/consultaSintomas', consultaSintomaController.getAllConsultaSintomas);
 router.get('/consultaSintomas/:id', consultaSintomaController.getConsultaSintomaById);
-router.get('/consultaSintomas/search', consultaSintomaController.getConsultaSintomasByParams);
+router.post('/consultaSintomas/search', consultaSintomaController.getConsultaSintomasByParams);
 router.put('/consultaSintomas/:id', consultaSintomaController.updateConsultaSintoma);
 router.delete('/consultaSintomas/:id', consultaSintomaController.deleteConsultaSintoma);
 
@@ -42,7 +42,7 @@ router.delete('/consultaSintomas/:id', consultaSintomaController.deleteConsultaS
 router.post('/institucionesMedicas', institucionMedicaController.createInstitucionMedica);
 router.get('/institucionesMedicas', institucionMedicaController.getAllInstitucionesMedicas);
 router.get('/institucionesMedicas/:id', institucionMedicaController.getInstitucionMedicaById);
-router.get('/institucionesMedicas/search', institucionMedicaController.getInstitucionesMedicasByParams);
+router.post('/institucionesMedicas/search', institucionMedicaController.getInstitucionesMedicasByParams);
 router.put('/institucionesMedicas/:id', institucionMedicaController.updateInstitucionMedica);
 router.delete('/institucionesMedicas/:id', institucionMedicaController.deleteInstitucionMedica);
 
@@ -50,7 +50,7 @@ router.delete('/institucionesMedicas/:id', institucionMedicaController.deleteIns
 router.post('/medicos', medicoController.createMedico);
 router.get('/medicos', medicoController.getAllMedicos);
 router.get('/medicos/:id', medicoController.getMedicoById);
-router.get('/medicos/search', medicoController.getMedicosByParams);
+router.post('/medicos/search', medicoController.getMedicosByParams);
 router.put('/medicos/:id', medicoController.updateMedico);
 router.delete('/medicos/:id', medicoController.deleteMedico);
 
@@ -58,7 +58,7 @@ router.delete('/medicos/:id', medicoController.deleteMedico);
 router.post('/citas', citaController.createCita);
 router.get('/citas', citaController.getAllCitas);
 router.get('/citas/:id', citaController.getCitaById);
-router.get('/citas/search', citaController.getCitasByParams);
+router.post('/citas/search', citaController.getCitasByParams);
 router.put('/citas/:id', citaController.updateCita);
 router.delete('/citas/:id', citaController.deleteCita);
 
@@ -66,14 +66,14 @@ router.delete('/citas/:id', citaController.deleteCita);
 router.post('/consultasAuditorias', consultaAuditoriaController.createConsultaAuditoria);
 router.get('/consultasAuditorias', consultaAuditoriaController.getAllConsultaAuditorias);
 router.get('/consultasAuditorias/:id', consultaAuditoriaController.getConsultaAuditoriaById);
-router.get('/consultasAuditorias/search', consultaAuditoriaController.getConsultaAuditoriasByParams);
+router.post('/consultasAuditorias/search', consultaAuditoriaController.getConsultaAuditoriasByParams);
 router.put('/consultasAuditorias/:id', consultaAuditoriaController.updateConsultaAuditoria);
 
 // Rutas para consultas
 router.post('/consultas', consultaController.createConsulta);
 router.get('/consultas', consultaController.getAllConsultas);
 router.get('/consultas/:id', consultaController.getConsultaById);
-router.get('/consultas/search', consultaController.getConsultasByParams);
+router.post('/consultas/search', consultaController.getConsultasByParams);
 router.put('/consultas/:id', consultaController.updateConsulta);
 router.delete('/consultas/:id', consultaController.deleteConsulta);
 

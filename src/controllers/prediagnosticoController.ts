@@ -5,7 +5,7 @@ import { log } from 'console';
 class PrediagnosticoController {
   public async generarPrediagnostico(req: Request, res: Response): Promise<void> {
     try {
-      const { sintomas, nombre } = req.body;
+      const { sintomas, nombre, filePath,x,y } = req.body;
       if (!sintomas) {
         res.status(400).json({ error: 'Los síntomas son requeridos' });
         return;
@@ -14,7 +14,7 @@ class PrediagnosticoController {
         res.status(400).json({ error: 'El nombre es requerido' });
         return;
       }
-      const resultado = await prediagnosticoService.generarPrediagnostico(nombre,sintomas);
+      const resultado = await prediagnosticoService.generarPrediagnostico(nombre,sintomas,filePath,x,y);
       res.status(200).json(resultado);
     } catch (error) {
         log(error);

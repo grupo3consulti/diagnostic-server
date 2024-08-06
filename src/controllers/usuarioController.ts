@@ -36,7 +36,8 @@ class UsuarioController {
 
   async getUsuarioByParams(req: Request, res: Response): Promise<void> {
     try {
-      const params = req.query;
+      const params = req.body;
+
       const usuario = await usuarioService.getUsuarioByParams(params);
       if (usuario) {
         res.status(200).json(usuario);
@@ -44,6 +45,7 @@ class UsuarioController {
         res.status(404).json({ message: 'Usuario no encontrado' });
       }
     } catch (error: any) {
+      console.log(error);
       res.status(500).json({ message: error.message });
     }
   }

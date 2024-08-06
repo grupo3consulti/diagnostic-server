@@ -35,7 +35,7 @@ class InstitucionMedicaController {
 
   async getInstitucionesMedicasByParams(req: Request, res: Response): Promise<Response> {
     try {
-      const institucionesMedicas = await InstitucionMedicaService.getInstitucionesMedicasByParams(req.query);
+      const institucionesMedicas = await InstitucionMedicaService.getInstitucionesMedicasByParams(req.body);
       return res.status(200).json(institucionesMedicas);
     } catch (error: any) {
       return res.status(500).json({ error: error.message });
