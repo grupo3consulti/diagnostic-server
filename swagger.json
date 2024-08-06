@@ -1,0 +1,827 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Diagnostic Server API",
+    "version": "1.0.0",
+    "description": "API documentation for the Diagnostic Server"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/diagnostic"
+    }
+  ],
+  "paths": {
+    "/usuarios": {
+      "post": {
+        "summary": "Create a new user",
+        "responses": {
+          "201": {
+            "description": "User created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "A list of users."
+          }
+        }
+      }
+    },
+    "/usuarios/{id}": {
+      "get": {
+        "summary": "Get a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User deleted."
+          }
+        }
+      }
+    },
+    "/usuarios/search": {
+      "get": {
+        "summary": "Search users by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of users matching the search criteria."
+          }
+        }
+      }
+    },
+    "/usuarios/login": {
+      "post": {
+        "summary": "User login",
+        "responses": {
+          "200": {
+            "description": "User logged in."
+          }
+        }
+      }
+    },
+    "/sintomas": {
+      "post": {
+        "summary": "Create a new symptom",
+        "responses": {
+          "201": {
+            "description": "Symptom created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all symptoms",
+        "responses": {
+          "200": {
+            "description": "A list of symptoms."
+          }
+        }
+      }
+    },
+    "/sintomas/{id}": {
+      "get": {
+        "summary": "Get a symptom by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A symptom object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a symptom by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Symptom updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a symptom by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Symptom deleted."
+          }
+        }
+      }
+    },
+    "/sintomas/search": {
+      "get": {
+        "summary": "Search symptoms by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of symptoms matching the search criteria."
+          }
+        }
+      }
+    },
+    "/consultaSintomas": {
+      "post": {
+        "summary": "Create a new symptom consultation",
+        "responses": {
+          "201": {
+            "description": "Symptom consultation created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all symptom consultations",
+        "responses": {
+          "200": {
+            "description": "A list of symptom consultations."
+          }
+        }
+      }
+    },
+    "/consultaSintomas/{id}": {
+      "get": {
+        "summary": "Get a symptom consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A symptom consultation object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a symptom consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Symptom consultation updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a symptom consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Symptom consultation deleted."
+          }
+        }
+      }
+    },
+    "/consultaSintomas/search": {
+      "get": {
+        "summary": "Search symptom consultations by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of symptom consultations matching the search criteria."
+          }
+        }
+      }
+    },
+    "/institucionesMedicas": {
+      "post": {
+        "summary": "Create a new medical institution",
+        "responses": {
+          "201": {
+            "description": "Medical institution created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all medical institutions",
+        "responses": {
+          "200": {
+            "description": "A list of medical institutions."
+          }
+        }
+      }
+    },
+    "/institucionesMedicas/{id}": {
+      "get": {
+        "summary": "Get a medical institution by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A medical institution object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a medical institution by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Medical institution updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a medical institution by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Medical institution deleted."
+          }
+        }
+      }
+    },
+    "/institucionesMedicas/search": {
+      "get": {
+        "summary": "Search medical institutions by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of medical institutions matching the search criteria."
+          }
+        }
+      }
+    },
+    "/medicos": {
+      "post": {
+        "summary": "Create a new doctor",
+        "responses": {
+          "201": {
+            "description": "Doctor created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all doctors",
+        "responses": {
+          "200": {
+            "description": "A list of doctors."
+          }
+        }
+      }
+    },
+    "/medicos/{id}": {
+      "get": {
+        "summary": "Get a doctor by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A doctor object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a doctor by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Doctor updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a doctor by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Doctor deleted."
+          }
+        }
+      }
+    },
+    "/medicos/search": {
+      "get": {
+        "summary": "Search doctors by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of doctors matching the search criteria."
+          }
+        }
+      }
+    },
+    "/citas": {
+      "post": {
+        "summary": "Create a new appointment",
+        "responses": {
+          "201": {
+            "description": "Appointment created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all appointments",
+        "responses": {
+          "200": {
+            "description": "A list of appointments."
+          }
+        }
+      }
+    },
+    "/citas/{id}": {
+      "get": {
+        "summary": "Get an appointment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An appointment object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an appointment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Appointment updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an appointment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Appointment deleted."
+          }
+        }
+      }
+    },
+    "/citas/search": {
+      "get": {
+        "summary": "Search appointments by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of appointments matching the search criteria."
+          }
+        }
+      }
+    },
+    "/consultasAuditorias": {
+      "post": {
+        "summary": "Create a new audit consultation",
+        "responses": {
+          "201": {
+            "description": "Audit consultation created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all audit consultations",
+        "responses": {
+          "200": {
+            "description": "A list of audit consultations."
+          }
+        }
+      }
+    },
+    "/consultasAuditorias/{id}": {
+      "get": {
+        "summary": "Get an audit consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An audit consultation object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an audit consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Audit consultation updated."
+          }
+        }
+      }
+    },
+    "/consultasAuditorias/search": {
+      "get": {
+        "summary": "Search audit consultations by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of audit consultations matching the search criteria."
+          }
+        }
+      }
+    },
+    "/consultas": {
+      "post": {
+        "summary": "Create a new consultation",
+        "responses": {
+          "201": {
+            "description": "Consultation created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all consultations",
+        "responses": {
+          "200": {
+            "description": "A list of consultations."
+          }
+        }
+      }
+    },
+    "/consultas/{id}": {
+      "get": {
+        "summary": "Get a consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A consultation object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consultation updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a consultation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Consultation deleted."
+          }
+        }
+      }
+    },
+    "/consultas/search": {
+      "get": {
+        "summary": "Search consultations by parameters",
+        "responses": {
+          "200": {
+            "description": "A list of consultations matching the search criteria."
+          }
+        }
+      }
+    },
+    "/parametrosCab": {
+      "post": {
+        "summary": "Create a new parameter header",
+        "responses": {
+          "201": {
+            "description": "Parameter header created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all parameter headers",
+        "responses": {
+          "200": {
+            "description": "A list of parameter headers."
+          }
+        }
+      }
+    },
+    "/parametrosCab/{id}": {
+      "get": {
+        "summary": "Get a parameter header by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A parameter header object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a parameter header by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parameter header updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a parameter header by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Parameter header deleted."
+          }
+        }
+      }
+    },
+    "/parametrosDet": {
+      "post": {
+        "summary": "Create a new parameter detail",
+        "responses": {
+          "201": {
+            "description": "Parameter detail created."
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all parameter details",
+        "responses": {
+          "200": {
+            "description": "A list of parameter details."
+          }
+        }
+      }
+    },
+    "/parametrosDet/{id}": {
+      "get": {
+        "summary": "Get a parameter detail by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A parameter detail object."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a parameter detail by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parameter detail updated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a parameter detail by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Parameter detail deleted."
+          }
+        }
+      }
+    }
+  }
+}

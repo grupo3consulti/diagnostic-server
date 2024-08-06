@@ -5,11 +5,14 @@ import parametroDetService from './parametroDetService';
 
 class PrediagnosticoService {
   private openai: OpenAI;
+  private apiKey = process.env.OPENAI_API_KEY;
 
   constructor() {
-    this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
+    if (!this.apiKey) {
+      throw new Error('The OPENAI_API_KEY environment variable is missing or empty');
+    }
+
+    this.openai = new OpenAI({ apiKey:this.apiKey });
   }
 
   async generarPrediagnostico(nombre: string, sintomas: string): Promise<any> {
@@ -49,7 +52,7 @@ class PrediagnosticoService {
         return especialidad.clave;
       }
     }
-    return 'GENERAL';
+    return 'MEDICINA GENERAL';
   }
 }
 
