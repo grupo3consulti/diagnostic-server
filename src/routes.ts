@@ -10,6 +10,10 @@ import consultaController from './controllers/consultaController';
 import parametroCabController from './controllers/parametroCabController';
 import parametroDetController from './controllers/parametroDetController';
 import prediagnosticoController from './controllers/prediagnosticoController';
+import consultaEnfermedadController from './controllers/consultaEnfermedadController';
+import enfermedadController from './controllers/enfermedadController';
+import resultadoExamenController from './controllers/resultadoExamenController';
+import enfermedadSintomaController from './controllers/enfermedadSintomaController';
 
 const router = Router();
 
@@ -94,4 +98,33 @@ router.delete('/parametrosDet/:id', parametroDetController.deleteParametroDet);
 
 // Rutas para prediagnostico
 router.post('/prediagnostico', prediagnosticoController.generarPrediagnostico);
+
+// Rutas para consulta de enfermedades
+router.post('/consultaEnfermedades', consultaEnfermedadController.create);
+router.get('/consultaEnfermedades', consultaEnfermedadController.findAll);
+router.get('/consultaEnfermedades/:consulta_id/:enfermedad_id', consultaEnfermedadController.findById);
+router.put('/consultaEnfermedades/:consulta_id/:enfermedad_id', consultaEnfermedadController.update);
+router.delete('/consultaEnfermedades/:consulta_id/:enfermedad_id', consultaEnfermedadController.delete);
+
+// Rutas para enfermedades
+router.post('/enfermedades', enfermedadController.create);
+router.get('/enfermedades', enfermedadController.findAll);
+router.get('/enfermedades/:id', enfermedadController.findById);
+router.put('/enfermedades/:id', enfermedadController.update);
+router.delete('/enfermedades/:id', enfermedadController.delete);
+
+// Rutas para resultados de exámenes
+router.post('/resultadosExamenes', resultadoExamenController.create);
+router.get('/resultadosExamenes', resultadoExamenController.findAll);
+router.get('/resultadosExamenes/:id', resultadoExamenController.findById);
+router.put('/resultadosExamenes/:id', resultadoExamenController.update);
+router.delete('/resultadosExamenes/:id', resultadoExamenController.delete);
+
+// Rutas para enfermedad-síntoma
+router.post('/enfermedadesSintomas', enfermedadSintomaController.create);
+router.get('/enfermedadesSintomas', enfermedadSintomaController.findAll);
+router.get('/enfermedadesSintomas/:enfermedad_id/:sintoma_id', enfermedadSintomaController.findById);
+router.put('/enfermedadesSintomas/:enfermedad_id/:sintoma_id', enfermedadSintomaController.update);
+router.delete('/enfermedadesSintomas/:enfermedad_id/:sintoma_id', enfermedadSintomaController.delete);
+
 export default router;
