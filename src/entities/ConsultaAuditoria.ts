@@ -6,7 +6,6 @@ interface ConsultaAuditoriaAttributes {
   consulta_id: number;
   documento_auditoria?: string;
   prediagnostico?: string;
-  síntoma_id: number;
   fecha_creacion?: Date;
   usr_creacion?: string;
 }
@@ -18,7 +17,6 @@ class ConsultaAuditoria extends Model<ConsultaAuditoriaAttributes, ConsultaAudit
   public consulta_id!: number;
   public documento_auditoria?: string;
   public prediagnostico?: string;
-  public síntoma_id!: number;
   public fecha_creacion?: Date;
   public usr_creacion?: string;
 }
@@ -41,13 +39,6 @@ ConsultaAuditoria.init({
   },
   prediagnostico: {
     type: DataTypes.TEXT,
-  },
-  síntoma_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'síntoma',
-      key: 'id_síntoma',
-    },
   },
   fecha_creacion: {
     type: DataTypes.DATE,
