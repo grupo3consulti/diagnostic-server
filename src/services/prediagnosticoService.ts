@@ -1,5 +1,5 @@
-import IAService from './IAService';
-import MessageService from './MessageService';
+import IAService from './iAService';
+import MessageService from './messageService';
 import MedicoService from './medicoService';
 import parametroDetService from './parametroDetService';
 import InstitucionMedicaService from './institucionMedicaService';
