@@ -197,7 +197,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
     {
       "usuarioId": 1,
       "medicoId": 2,
-      "fecha": "2023-10-01T10:00:00Z"
+      "fecha_hora": "2023-10-01T10:00:00Z"
     }
     ```
 
@@ -212,7 +212,7 @@ Este proyecto es una API para el diagnóstico médico utilizando OpenAI.
     {
       "usuarioId": 1,
       "medicoId": 2,
-      "fecha": "2023-10-01T10:00:00Z"
+      "fecha_hora": "2023-10-01T10:00:00Z"
     }
     ```
 
