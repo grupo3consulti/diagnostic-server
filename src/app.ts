@@ -6,10 +6,15 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
 import enviroment  from './config/enviroment';
 import path from "path";
+import cors from 'cors';
 dotenv.config();
 
 
 const app = express();
+
+app.use(cors( {
+            origin: '*', allowedHeaders: '*', methods: '*'
+            }));
 
 app.use(express.json());
 app.use('/diagnostic', routes);

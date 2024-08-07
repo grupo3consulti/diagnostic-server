@@ -1,30 +1,34 @@
 import { Sequelize } from 'sequelize';
-import enviroment  from '../config/enviroment';
-import InstitucionMedica from "../entities/InstitucionMedica";
-import Medico from "../entities/Medico";
+import enviroment from '../config/enviroment';
 
 const databaseUrl = `postgresql://${enviroment.DB_USERNAME}:${enviroment.DB_PASSWORD}@${enviroment.DB_HOST}/${enviroment.DB_NAME}`;
 
-const sequelize = new Sequelize(databaseUrl, {
-  dialect: 'postgres',
-  protocol: 'postgres',
-  logging: false,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  },
-  schema: 'db_diagnostic'
-});
+let sequelize: Sequelize;
 
-// Probar la conexión
-sequelize.authenticate()
-  .then(() => {
-    console.log('Conexión a la base de datos exitosa.');
-  })
-  .catch((err: any) => {
-    console.error('No se pudo conectar a la base de datos:', err);
+try {
+  sequelize = new Sequelize(databaseUrl, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
+    schema: 'db_diagnostic'
   });
 
+  sequelize.authenticate()
+    .then(() => {
+      console.log('Conexión a la base de datos exitosa.');
+    })
+    .catch((err: any) => {
+      console.error('No se pudo conectar a la base de datos:', err);
+    });
+} catch (err: any) {
+  console.error('Error al inicializar Sequelize:', err);
+}
+
+// @ts-ignore
 export default sequelize;
