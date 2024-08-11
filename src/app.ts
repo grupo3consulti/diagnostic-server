@@ -7,6 +7,9 @@ import swaggerDocument from '../swagger.json';
 import enviroment  from './config/enviroment';
 import path from "path";
 import cors from 'cors';
+
+require('../scripts/crons/cron');
+
 dotenv.config();
 
 

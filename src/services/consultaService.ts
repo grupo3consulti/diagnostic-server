@@ -229,6 +229,9 @@ class ConsultaService {
   async deleteConsulta(id: number): Promise<[number, Consulta[]]> {
     return await ConsultaRepository.delete(id);
   }
+  async getAllConsultaBetween(fecha_ini: Date, fecha_fin: Date): Promise<Consulta[]> {
+    return await ConsultaRepository.findAllBetween(fecha_ini, fecha_fin);
+  }
 }
 
 export default new ConsultaService();

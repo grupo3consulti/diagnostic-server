@@ -12,4 +12,10 @@ export default  {
 
     //OPEN AI
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+
+    //CRONS
+    ILLNESSES_TASK_SCHEDULE: process.env.ILLNESSES_TASK_SCHEDULE,
+
+    //GOOGLE MAP API
+    GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY
   };

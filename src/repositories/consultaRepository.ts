@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import Consulta from '../entities/Consulta';
 import { ConsultaCreationAttributes } from '../entities/Consulta';
 
@@ -41,6 +42,16 @@ class ConsultaRepository {
     return await Consulta.update({ estado: 'Eliminado' }, {
       where: { id_consulta: id },
       returning: true
+    });
+  }
+  
+  async findAllBetween(startDate: Date, endDate: Date): Promise<Consulta[]>  {
+    return await Consulta.findAll({
+      where: {
+        fecha_creacion: {
+            [Op.between]: [startDate, endDate]
+          }
+      }
     });
   }
 }

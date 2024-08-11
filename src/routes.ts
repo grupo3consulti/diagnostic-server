@@ -14,6 +14,9 @@ import consultaEnfermedadController from './controllers/consultaEnfermedadContro
 import enfermedadController from './controllers/enfermedadController';
 import resultadoExamenController from './controllers/resultadoExamenController';
 import enfermedadSintomaController from './controllers/enfermedadSintomaController';
+import ciudadController from './controllers/ciudadController';
+import provinciaController from './controllers/provinciaController';
+import casoController from './controllers/casoController';
 
 const router = Router();
 
@@ -126,5 +129,26 @@ router.get('/enfermedadesSintomas', enfermedadSintomaController.findAll);
 router.get('/enfermedadesSintomas/:enfermedad_id/:sintoma_id', enfermedadSintomaController.findById);
 router.put('/enfermedadesSintomas/:enfermedad_id/:sintoma_id', enfermedadSintomaController.update);
 router.delete('/enfermedadesSintomas/:enfermedad_id/:sintoma_id', enfermedadSintomaController.delete);
+
+// Rutas para las ciudades
+router.post('/ciudad', ciudadController.createCiudad)
+router.get('/ciudades', ciudadController.getAllCiudades)
+router.get('/ciudad/:id_ciudad', ciudadController.getCiudadById);
+router.put('/ciudad/:id_ciudad', ciudadController.updateCiudad);
+router.delete('/ciudad/:id_ciudad', ciudadController.deleteCiudad);
+
+// Rutas para las provincias
+router.post('/provincia', provinciaController.createProvincia)
+router.get('/provincias', provinciaController.getAllProvincias)
+router.get('/provincia/:id_provincia', provinciaController.getProvinciaById);
+router.put('/provincia/:id_provincia', provinciaController.updateProvincia);
+router.delete('/provincia/:id_provincia', provinciaController.deleteProvincia);
+
+// Rutas para los casos
+router.post('/caso', casoController.createCaso)
+router.get('/casos', casoController.getAllCasos)
+router.get('/caso/:id_caso', casoController.getCasoById);
+router.put('/caso/:id_caso', casoController.updateCaso);
+router.delete('/caso/:id_caso', casoController.deleteCaso);
 
 export default router;
