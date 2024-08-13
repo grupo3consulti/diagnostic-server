@@ -57,7 +57,7 @@ class ProvinciaController {
 
   async deleteProvincia(req: Request, res: Response): Promise<Response> {
     try {
-      const [deleted] = await ProvinciaService.delete(Number(req.params.id));
+      const [deleted] = await ProvinciaService.delete(Number(req.params.id_provincia));
       if (deleted) {
         return res.status(204).send();
       }

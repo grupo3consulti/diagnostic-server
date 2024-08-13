@@ -822,6 +822,1644 @@
           }
         }
       }
+    },
+    "/caso": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "cantidad_casos": {
+                  "example": 20,
+                  "type": "number"
+                },
+                "id_ciudad": {
+                  "example": 4,
+                  "type": "number"
+                },
+                "id_enfermedad": {
+                  "example": 10,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "crear provincias",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "cantidad_casos": {
+                  "example": 20,
+                  "type": "number"
+                },
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:31:23.854Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "fecha_reporte": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_caso": {
+                  "example": 2,
+                  "type": "number"
+                },
+                "id_ciudad": {
+                  "example": 4,
+                  "type": "number"
+                },
+                "id_enfermedad": {
+                  "example": 10,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "casos"
+        ],
+        "description": "crear caso",
+        "operationId": "crearCaso",
+        "summary": "crear caso"
+      }
+    },
+    "/caso/2": {
+      "delete": {
+        "consumes": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "elimiar provincia por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tags": [
+          "casos"
+        ],
+        "description": "elimiar provincia por id",
+        "operationId": "elimiarProvinciaPorId",
+        "summary": "elimiar provincia por id"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "obtener provincia por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "cantidad_casos": {
+                  "example": 20,
+                  "type": "number"
+                },
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:31:23.854Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "fecha_reporte": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_caso": {
+                  "example": 2,
+                  "type": "number"
+                },
+                "id_ciudad": {
+                  "example": 4,
+                  "type": "number"
+                },
+                "id_enfermedad": {
+                  "example": 10,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "casos"
+        ],
+        "description": "obtener casos por id",
+        "operationId": "obtenerCasosPorId",
+        "summary": "obtener casos por id"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "cantidad_casos": {
+                  "example": 99,
+                  "type": "number"
+                },
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "id_enfermedad": {
+                  "example": 10,
+                  "type": "number"
+                },
+                "usr_modificacion": {
+                  "example": "admin2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualizar caso por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "cantidad_casos": {
+                  "example": 99,
+                  "type": "number"
+                },
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:31:23.854Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "fecha_reporte": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_caso": {
+                  "example": 2,
+                  "type": "number"
+                },
+                "id_ciudad": {
+                  "example": 4,
+                  "type": "number"
+                },
+                "id_enfermedad": {
+                  "example": 10,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": "admin2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "casos"
+        ],
+        "description": "actualizar caso por id",
+        "operationId": "actualizarCasoPorId",
+        "summary": "actualizar caso por id"
+      }
+    },
+    "/casos": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "obtener todos los casos",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "example": [
+                {
+                  "cantidad_casos": 2,
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-11T09:46:03.229Z",
+                  "fe_modificacion": null,
+                  "fecha_reporte": null,
+                  "id_caso": 1,
+                  "id_ciudad": 4,
+                  "id_enfermedad": 16,
+                  "usr_creacion": null,
+                  "usr_modificacion": null
+                }
+              ],
+              "items": {
+                "properties": {
+                  "cantidad_casos": {
+                    "example": 2,
+                    "type": "number"
+                  },
+                  "estado": {
+                    "example": "activo",
+                    "type": "string"
+                  },
+                  "fe_creacion": {
+                    "example": "2024-08-11T09:46:03.229Z",
+                    "type": "string"
+                  },
+                  "fe_modificacion": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "fecha_reporte": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "id_caso": {
+                    "example": 1,
+                    "type": "number"
+                  },
+                  "id_ciudad": {
+                    "example": 4,
+                    "type": "number"
+                  },
+                  "id_enfermedad": {
+                    "example": 16,
+                    "type": "number"
+                  },
+                  "usr_creacion": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "usr_modificacion": {
+                    "example": null,
+                    "x-nullable": true
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "casos"
+        ],
+        "description": "obtener todos los casos",
+        "operationId": "obtenerTodosLosCasos",
+        "summary": "obtener todos los casos"
+      }
+    },
+    "/ciudad": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "fe_creacion": {
+                  "example": "2024-08-13T08:08:40.405Z",
+                  "type": "string"
+                },
+                "id_provincia": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "nombre_ciudad": {
+                  "example": "ciudad de prueba",
+                  "type": "string"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ciudades"
+        ],
+        "description": "crear ciudad",
+        "operationId": "crearCiudad",
+        "summary": "crear ciudad"
+      }
+    },
+    "/ciudad/4": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "obtener ciudad poor id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-11T09:46:02.928Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_ciudad": {
+                  "example": 4,
+                  "type": "number"
+                },
+                "id_provincia": {
+                  "example": 12,
+                  "type": "number"
+                },
+                "latitud": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "longitud": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "nombre_ciudad": {
+                  "example": "Babahoyo",
+                  "type": "string"
+                },
+                "usr_creacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "usr_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "ciudades"
+        ],
+        "description": "obtener ciudad por id",
+        "operationId": "obtenerCiudadPorId",
+        "summary": "obtener ciudad por id"
+      }
+    },
+    "/ciudad/5": {
+      "delete": {
+        "consumes": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "eliminar ciudad por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tags": [
+          "ciudades"
+        ],
+        "description": "obtener ciudad por id Copy 2",
+        "operationId": "obtenerCiudadPorIdCopy2",
+        "summary": "obtener ciudad por id Copy 2"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": "2024-08-14T08:08:40.405Z",
+                  "type": "string"
+                },
+                "id_provincia": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "latitud": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "longitud": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "nombre_ciudad": {
+                  "example": "ciudad de prueba",
+                  "type": "string"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": "admin",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualizar ciudad por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:08:40.405Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": "2024-08-14T13:08:40.405Z",
+                  "type": "string"
+                },
+                "id_ciudad": {
+                  "example": 5,
+                  "type": "number"
+                },
+                "id_provincia": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "latitud": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "longitud": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "nombre_ciudad": {
+                  "example": "ciudad de prueba",
+                  "type": "string"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": "admin",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "ciudades"
+        ],
+        "description": "actualizar ciudad por id",
+        "operationId": "actualizarCiudadPorId",
+        "summary": "actualizar ciudad por id"
+      }
+    },
+    "/ciudades": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "obtener ciudades por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "example": [
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-11T09:46:02.928Z",
+                  "fe_modificacion": null,
+                  "id_ciudad": 4,
+                  "id_provincia": 12,
+                  "latitud": null,
+                  "longitud": null,
+                  "nombre_ciudad": "Babahoyo",
+                  "usr_creacion": null,
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-13T08:08:40.405Z",
+                  "fe_modificacion": null,
+                  "id_ciudad": 5,
+                  "id_provincia": null,
+                  "latitud": null,
+                  "longitud": null,
+                  "nombre_ciudad": "ciudad de prueba",
+                  "usr_creacion": null,
+                  "usr_modificacion": null
+                }
+              ],
+              "items": {
+                "properties": {
+                  "estado": {
+                    "example": "activo",
+                    "type": "string"
+                  },
+                  "fe_creacion": {
+                    "example": "2024-08-11T09:46:02.928Z",
+                    "type": "string"
+                  },
+                  "fe_modificacion": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "id_ciudad": {
+                    "example": 4,
+                    "type": "number"
+                  },
+                  "id_provincia": {
+                    "example": 12,
+                    "type": "number",
+                    "x-nullable": true
+                  },
+                  "latitud": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "longitud": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "nombre_ciudad": {
+                    "example": "Babahoyo",
+                    "type": "string"
+                  },
+                  "usr_creacion": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "usr_modificacion": {
+                    "example": null,
+                    "x-nullable": true
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "ciudades"
+        ],
+        "description": "obtener todas las ciudades",
+        "operationId": "obtenerTodasLasCiudades",
+        "summary": "obtener todas las ciudades"
+      }
+    },
+    "/provincia": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "nombre_provincia": {
+                  "example": "provincia de prueba",
+                  "type": "string"
+                },
+                "pais_id": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "crear provincias",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:20:44.232Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_provincia": {
+                  "example": 51,
+                  "type": "number"
+                },
+                "nombre_provincia": {
+                  "example": "provincia de prueba",
+                  "type": "string"
+                },
+                "pais_id": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "provincias"
+        ],
+        "description": "crear provincias",
+        "operationId": "crearProvincias",
+        "summary": "crear provincias"
+      }
+    },
+    "/provincia/51": {
+      "delete": {
+        "consumes": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "eliminar provincia por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tags": [
+          "provincias"
+        ],
+        "description": "elimiar provincia por id",
+        "operationId": "elimiarProvinciaPorId1",
+        "summary": "elimiar provincia por id"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "obtener ciudad por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:20:44.232Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_provincia": {
+                  "example": 51,
+                  "type": "number"
+                },
+                "nombre_provincia": {
+                  "example": "provincia de prueba",
+                  "type": "string"
+                },
+                "pais_id": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "provincias"
+        ],
+        "description": "obtener provincia por id",
+        "operationId": "obtenerProvinciaPorId",
+        "summary": "obtener provincia por id"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "id_provincia": {
+                  "example": 51,
+                  "type": "number"
+                },
+                "nombre_provincia": {
+                  "example": "provincia de prueba",
+                  "type": "string"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": "admin2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "actualizar ciudad por id",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "properties": {
+                "estado": {
+                  "example": "activo",
+                  "type": "string"
+                },
+                "fe_creacion": {
+                  "example": "2024-08-13T08:20:44.232Z",
+                  "type": "string"
+                },
+                "fe_modificacion": {
+                  "example": null,
+                  "x-nullable": true
+                },
+                "id_provincia": {
+                  "example": 51,
+                  "type": "number"
+                },
+                "nombre_provincia": {
+                  "example": "provincia de prueba",
+                  "type": "string"
+                },
+                "pais_id": {
+                  "example": 1,
+                  "type": "number"
+                },
+                "usr_creacion": {
+                  "example": "admin",
+                  "type": "string"
+                },
+                "usr_modificacion": {
+                  "example": "admin2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "provincias"
+        ],
+        "description": "actualizar ciudad por id",
+        "operationId": "actualizarCiudadPorId1",
+        "summary": "actualizar ciudad por id"
+      }
+    },
+    "/provincias": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "obtener todas las provincias",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "example": [
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 1,
+                  "nombre_provincia": "Azuay",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 2,
+                  "nombre_provincia": "Bolívar",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 3,
+                  "nombre_provincia": "Cañar",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 4,
+                  "nombre_provincia": "Carchi",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 5,
+                  "nombre_provincia": "Cotopaxi",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 6,
+                  "nombre_provincia": "Chimborazo",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 7,
+                  "nombre_provincia": "El Oro",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 8,
+                  "nombre_provincia": "Esmeraldas",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 9,
+                  "nombre_provincia": "Guayas",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 10,
+                  "nombre_provincia": "Imbabura",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 11,
+                  "nombre_provincia": "Loja",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 12,
+                  "nombre_provincia": "Los Ríos",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 13,
+                  "nombre_provincia": "Manabí",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 14,
+                  "nombre_provincia": "Morona Santiago",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 15,
+                  "nombre_provincia": "Napo",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 16,
+                  "nombre_provincia": "Pastaza",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 17,
+                  "nombre_provincia": "Pichincha",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 18,
+                  "nombre_provincia": "Tungurahua",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 19,
+                  "nombre_provincia": "Zamora Chinchipe",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 20,
+                  "nombre_provincia": "Galápagos",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 21,
+                  "nombre_provincia": "Sucumbíos",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 22,
+                  "nombre_provincia": "Orellana",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 23,
+                  "nombre_provincia": "Santo Domingo de los Tsáchilas",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 24,
+                  "nombre_provincia": "Santa Elena",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                },
+                {
+                  "estado": "activo",
+                  "fe_creacion": "2024-08-10T04:31:34.815Z",
+                  "fe_modificacion": null,
+                  "id_provincia": 25,
+                  "nombre_provincia": "Zonas No Delimitadas",
+                  "pais_id": 1,
+                  "usr_creacion": "admin",
+                  "usr_modificacion": null
+                }
+              ],
+              "items": {
+                "properties": {
+                  "estado": {
+                    "example": "activo",
+                    "type": "string"
+                  },
+                  "fe_creacion": {
+                    "example": "2024-08-10T04:31:34.815Z",
+                    "type": "string"
+                  },
+                  "fe_modificacion": {
+                    "example": null,
+                    "x-nullable": true
+                  },
+                  "id_provincia": {
+                    "example": 1,
+                    "type": "number"
+                  },
+                  "nombre_provincia": {
+                    "example": "Azuay",
+                    "type": "string"
+                  },
+                  "pais_id": {
+                    "example": 1,
+                    "type": "number"
+                  },
+                  "usr_creacion": {
+                    "example": "admin",
+                    "type": "string"
+                  },
+                  "usr_modificacion": {
+                    "example": null,
+                    "x-nullable": true
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "provincias"
+        ],
+        "description": "obtener todas las provincias",
+        "operationId": "obtenerTodasLasProvincias",
+        "summary": "obtener todas las provincias"
+      }
+    },
+    "/semaforo": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tipo",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "valor",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "obtener semaforo por enfermedad",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Connection": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "ETag": {
+                "type": "string"
+              },
+              "Keep-Alive": {
+                "type": "string"
+              },
+              "X-Powered-By": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "example": [
+                {
+                  "cantidad": 2,
+                  "color": "verde",
+                  "enfermedad": "Gastroenteritis por Blastocystis hominis"
+                }
+              ],
+              "items": {
+                "properties": {
+                  "cantidad": {
+                    "example": 2,
+                    "type": "number"
+                  },
+                  "color": {
+                    "example": "verde",
+                    "type": "string"
+                  },
+                  "enfermedad": {
+                    "example": "Gastroenteritis por Blastocystis hominis",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "tags": [
+          "semaforo"
+        ],
+        "description": "obtener semaforo por enfermedad",
+        "operationId": "obtenerSemaforoPorEnfermedad",
+        "summary": "obtener semaforo por enfermedad"
+      }
     }
-  }
+}
 }

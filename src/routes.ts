@@ -151,4 +151,7 @@ router.get('/caso/:id_caso', casoController.getCasoById);
 router.put('/caso/:id_caso', casoController.updateCaso);
 router.delete('/caso/:id_caso', casoController.deleteCaso);
 
+// Semaforo
+router.get('/semaforo', casoController.semaforo)
+
 export default router;

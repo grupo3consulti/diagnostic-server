@@ -57,7 +57,7 @@ class CasoController {
 
   async deleteCaso(req: Request, res: Response): Promise<Response> {
     try {
-      const [deleted] = await CasoService.delete(Number(req.params.id));
+      const [deleted] = await CasoService.delete(Number(req.params.id_caso));
       if (deleted) {
         return res.status(204).send();
       }
@@ -66,6 +66,18 @@ class CasoController {
       return res.status(500).json({ error: error.message });
     }
   }
+  async semaforo (req: Request, res: Response): Promise<Response> {
+    try {
+        const caso = await CasoService.generateSemaforo(String(req.query.tipo),String(req.query.valor),);
+        if (caso) {
+          return res.status(200).json(caso);
+        } else {
+          return res.status(404).json({ message: 'Caso no encontrado' });
+        }
+      } catch (error: any) {
+        return res.status(500).json({ error: error.message });
+      }
+    }
 }
 
 export default new CasoController();
