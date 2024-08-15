@@ -3,16 +3,8 @@ import MessageService from './messageService';
 import MedicoService from './medicoService';
 import parametroDetService from './parametroDetService';
 import InstitucionMedicaService from './institucionMedicaService';
-import fs from 'fs';
-import PdfParse from 'pdf-parse';
-
+import UtilService from './utilService';
 class PrediagnosticoService {
-
-  private async extractTextFromPDF(file: any): Promise<string> {
-    const pdfData = await PdfParse(file.buffer);
-    
-    return pdfData.text;
-  }
 
   async generarPrediagnostico(nombre: string, sintomas: string[], archivo?: any, coordenada_x?: string, coordenada_y?: string): Promise<any> {
     
@@ -22,7 +14,7 @@ class PrediagnosticoService {
     ];
 
     if (archivo) {
-      const pdfContent = await this.extractTextFromPDF(archivo);
+      const pdfContent = await UtilService.extractTextFromPDF(archivo);
       initialMessages.push({ role: 'user', content: `El pdf adjunto contiene los resultados de laboratorio: ${pdfContent}` });
     }
 

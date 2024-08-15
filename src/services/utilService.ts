@@ -1,3 +1,4 @@
+import PdfParse from 'pdf-parse';
 import enviroment from '../config/enviroment';
 import { AddressType, Client, GeocodingAddressComponentType } from "@googlemaps/google-maps-services-js";
 
@@ -53,6 +54,11 @@ class UtilService {
           return false;
         }
     }
+
+    async extractTextFromPDF(file: any): Promise<string> {
+        const pdfData = await PdfParse(file.buffer);
+        return pdfData.text;
+      }
 }
 
 export default new UtilService();
