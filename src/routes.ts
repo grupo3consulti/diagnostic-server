@@ -17,7 +17,9 @@ import enfermedadSintomaController from './controllers/enfermedadSintomaControll
 import ciudadController from './controllers/ciudadController';
 import provinciaController from './controllers/provinciaController';
 import casoController from './controllers/casoController';
+import multer from 'multer';
 
+const upload = multer();
 const router = Router();
 
 // Rutas para usuarios
@@ -100,7 +102,7 @@ router.put('/parametrosDet/:id', parametroDetController.updateParametroDet);
 router.delete('/parametrosDet/:id', parametroDetController.deleteParametroDet);
 
 // Rutas para prediagnostico
-router.post('/prediagnostico', prediagnosticoController.generarPrediagnostico);
+router.post('/prediagnostico', upload.single('filePath'), prediagnosticoController.generarPrediagnostico);
 
 // Rutas para consulta de enfermedades
 router.post('/consultaEnfermedades', consultaEnfermedadController.create);

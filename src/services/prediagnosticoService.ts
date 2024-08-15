@@ -4,24 +4,25 @@ import MedicoService from './medicoService';
 import parametroDetService from './parametroDetService';
 import InstitucionMedicaService from './institucionMedicaService';
 import fs from 'fs';
-import pdf from 'pdf-parse';
+import PdfParse from 'pdf-parse';
 
 class PrediagnosticoService {
 
-  private async extractTextFromPDF(filePath: string): Promise<string> {
-    const dataBuffer = fs.readFileSync(filePath);
-    const pdfData = await pdf(dataBuffer);
+  private async extractTextFromPDF(file: any): Promise<string> {
+    const pdfData = await PdfParse(file.buffer);
+    
     return pdfData.text;
   }
 
-  async generarPrediagnostico(nombre: string, sintomas: string[], filePath?: string, coordenada_x?: string, coordenada_y?: string): Promise<any> {
+  async generarPrediagnostico(nombre: string, sintomas: string[], archivo?: any, coordenada_x?: string, coordenada_y?: string): Promise<any> {
+    
     const initialMessages: { role: 'system' | 'user'; content: string }[] = [
       { role: 'system', content: 'Eres un asistente médico que ayuda a diagnosticar enfermedades basadas en síntomas.' },
       { role: 'user', content: `Paciente ${nombre} presenta los siguientes síntomas: ${sintomas.join(', ')}` }
     ];
 
-    if (filePath) {
-      const pdfContent = await this.extractTextFromPDF(filePath);
+    if (archivo) {
+      const pdfContent = await this.extractTextFromPDF(archivo);
       initialMessages.push({ role: 'user', content: `El pdf adjunto contiene los resultados de laboratorio: ${pdfContent}` });
     }
 

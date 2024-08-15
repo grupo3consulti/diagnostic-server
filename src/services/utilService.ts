@@ -43,6 +43,16 @@ class UtilService {
           )?.long_name;
           return component
     }
+
+    
+    isValidJSON(jsonString: string) {
+        try {
+          JSON.parse(jsonString);
+          return true;
+        } catch (e) {
+          return false;
+        }
+    }
 }
 
 export default new UtilService();
