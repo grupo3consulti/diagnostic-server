@@ -62,7 +62,8 @@ class UsuarioService {
             }
         }
 
-        const token = jwt.sign(tokenObj, '123456789', {expiresIn: '1h'});
+        const token = jwt.sign(tokenObj, '123456789', {expiresIn: '1h', algorithm: 'HS256', encoding: 'utf-8'});
+        const encodedToken = encodeURIComponent(token);
 
         return token;
 
