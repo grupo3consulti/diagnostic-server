@@ -79,7 +79,7 @@ router.post('/consultasAuditorias/search', consultaAuditoriaController.getConsul
 router.put('/consultasAuditorias/:id', consultaAuditoriaController.updateConsultaAuditoria);
 
 // Rutas para consultas
-router.post('/consultas', consultaController.createConsulta);
+router.post('/consultas', upload.single('filePath'), consultaController.createConsulta);
 router.get('/consultas', consultaController.getAllConsultas);
 router.get('/consultas/:id', consultaController.getConsultaById);
 router.post('/consultas/search', consultaController.getConsultasByParams);

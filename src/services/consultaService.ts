@@ -10,6 +10,7 @@ import fs from 'fs';
 import pdf from 'pdf-parse';
 import enfermedadRepository from '../repositories/enfermedadRepository';
 import consultaAuditoriaRepository from '../repositories/consultaAuditoriaRepository';
+import UtilService from './utilService';
 
 interface IAResponse<T> {
   data: T;
@@ -53,11 +54,6 @@ async function extractJsonFromString(input: string): Promise<any> {
 
 
 class ConsultaService {
-  private async extractTextFromPDF(filePath: string): Promise<string> {
-    const dataBuffer = fs.readFileSync(filePath);
-    const pdfData = await pdf(dataBuffer);
-    return pdfData.text;
-  }
 
   async convertIAResponseToJson<T>(iaResponse: string): Promise<T> {
     try {
@@ -100,8 +96,8 @@ class ConsultaService {
         { role: 'user', content: `Paciente presenta los siguientes síntomas: ${data.sintomas.map((s: { descripcion: string }) => s.descripcion).join(', ')}` }
       ];
 
-      if (data.documento) {
-        const pdfContent = await this.extractTextFromPDF(data.documento);
+      if (data.file) {
+        const pdfContent = await UtilService.extractTextFromPDF(data.file);
         initialMessages.push({
           role: 'user',
           content: `El PDF adjunto contiene los resultados de laboratorio: ${pdfContent}. Necesito que me proporciones un JSON con esta estructura: {"Enfermedad": "nombre de la enfermedad", "Descripcion": "descripción de la enfermedad", "Tipo": "tipo de la enfermedad"}. Solo el JSON, sin texto adicional, y respetando exactamente los campos de salida.`
@@ -145,11 +141,11 @@ class ConsultaService {
         }
       }
 
-      if (data.documento) {
+      if (data.file) {
         const examenMessage: { role: 'system' | 'user'; content: string }[] = [
           { role: 'system', content: 'Eres un asistente médico que ayuda a diagnosticar enfermedades basadas en pdf de examenes.' },
         ];
-        const pdfContent = await this.extractTextFromPDF(data.documento);
+        const pdfContent = await UtilService.extractTextFromPDF(data.file);
         examenMessage.push({
           role: 'user',
           content: `Analiza el pdf y dame un json sin ningun texto adicional, siguiendo esta estructura: 
