@@ -66,6 +66,25 @@ class ConsultaController {
       return res.status(500).json({ error: error.message });
     }
   }
+
+  async getAllConsultaBetween(req: Request, res: Response): Promise<Response> {
+    try {
+      const consultas = await ConsultaService.getAllConsultaBetween(new Date(req.body.fecha_ini), new Date(req.body.fecha_fin));
+      return res.status(200).json(consultas);
+    } catch (error:any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+
+  async getConsultaDetailsByCitaId(req: Request, res: Response): Promise<Response> {
+    try {
+      const details = await ConsultaService.getConsultaDetailsByCitaId(Number(req.params.cita_id));
+      return res.status(200).json(details);
+    } catch (error:any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  
 }
 
 export default new ConsultaController();
