@@ -81,6 +81,7 @@ class ConsultaService {
         usr_modificacion: 'system',
         fecha_creacion: new Date(),
         fecha_modificacion: new Date(),
+        cita_id: data.cita_id
       };
 
       const consulta = await ConsultaRepository.create(consultaData);
@@ -107,6 +108,8 @@ class ConsultaService {
         });
         initialMessages.push({role: 'user',
           content: `Genera obligatoriamente solo el json.`});
+      }else{
+        throw new Error('No se ha adjuntado un documento');
       }
 
       const messagesEnfermedad = await MessageService.createMessages(initialMessages);
@@ -232,6 +235,32 @@ class ConsultaService {
   async getAllConsultaBetween(fecha_ini: Date, fecha_fin: Date): Promise<Consulta[]> {
     return await ConsultaRepository.findAllBetween(fecha_ini, fecha_fin);
   }
+
+  async getConsultaDetailsByCitaId(cita_id: number): Promise<any> {
+    try {
+      const consulta = await ConsultaRepository.findOneByParams({ cita_id });
+
+      if (!consulta) {
+        throw new Error('Consulta no encontrada');
+      }
+
+      const consulta_id = consulta.id_consulta;
+
+      const resultadoExamen = await resultadoExamenRepository.findByParams({ consulta_id });
+      const consultaSintomas = await consultaSintomaRepository.findByParams({ consulta_id });
+      const consultaEnfermedad = await consultaEnfermedadRepository.findByParams({ consulta_id });
+
+      return {
+        consulta,
+        resultadoExamen,
+        consultaSintomas,
+        consultaEnfermedad
+      };
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+  }
+
 }
 
 export default new ConsultaService();

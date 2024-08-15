@@ -85,6 +85,8 @@ router.get('/consultas/:id', consultaController.getConsultaById);
 router.post('/consultas/search', consultaController.getConsultasByParams);
 router.put('/consultas/:id', consultaController.updateConsulta);
 router.delete('/consultas/:id', consultaController.deleteConsulta);
+router.get('/consultas/between', consultaController.getAllConsultaBetween);
+router.get('/consultas/details/:cita_id', consultaController.getConsultaDetailsByCitaId);
 
 // Rutas para parámetros cabecera
 router.post('/parametrosCab', parametroCabController.createParametroCab);
