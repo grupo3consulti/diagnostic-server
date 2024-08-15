@@ -3,6 +3,7 @@ import sequelize from '../config/database';
 
 interface ConsultaAttributes {
   id_consulta: number;
+  cita_id: number;
   fecha_hora: Date;
   descripción?: string;
   documento?: string;
@@ -19,6 +20,7 @@ interface ConsultaCreationAttributes extends Optional<ConsultaAttributes, 'id_co
 
 class Consulta extends Model<ConsultaAttributes, ConsultaCreationAttributes> implements ConsultaAttributes {
   public id_consulta!: number;
+  public cita_id!: number;
   public fecha_hora!: Date;
   public descripción?: string;
   public documento?: string;
@@ -36,6 +38,13 @@ Consulta.init({
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+  },
+  cita_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'cita',
+      key: 'id_cita',
+    },
   },
   fecha_hora: {
     type: DataTypes.DATE,

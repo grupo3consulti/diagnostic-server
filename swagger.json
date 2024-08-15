@@ -14,6 +14,45 @@
     "/usuarios": {
       "post": {
         "summary": "Create a new user",
+        "tags": [
+          "usuarios"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Juan Perez"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "juan.perez@example.com"
+                  },
+                  "contraseña": {
+                    "type": "string",
+                    "example": "password123"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "activo"
+                  },
+                  "direccion": {
+                    "type": "string",
+                    "example": "Av. Siempre Viva 123"
+                  },
+                  "telefono": {
+                    "type": "string",
+                    "example": "0987654321"
+                  }
+                },
+                "required": ["nombre", "email", "contraseña", "estado"]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "User created."
@@ -26,12 +65,18 @@
           "200": {
             "description": "A list of users."
           }
-        }
+        },
+        "tags": [
+          "usuarios"
+        ]
       }
     },
     "/usuarios/{id}": {
       "get": {
         "summary": "Get a user by ID",
+        "tags": [
+          "usuarios"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -50,16 +95,59 @@
       },
       "put": {
         "summary": "Update a user by ID",
+        "tags": [
+          "usuarios"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Juan Perez Actualizado"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "juan.perez.updated@example.com"
+                  },
+                  "contraseña": {
+                    "type": "string",
+                    "example": "newpassword123"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "direccion": {
+                    "type": "string",
+                    "example": "Av. Nueva 123"
+                  },
+                  "telefono": {
+                    "type": "string",
+                    "example": "0987654322"
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["nombre", "email", "estado"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "User updated."
@@ -68,6 +156,9 @@
       },
       "delete": {
         "summary": "Delete a user by ID",
+        "tags": [
+          "usuarios"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -88,6 +179,9 @@
     "/usuarios/search": {
       "post": {
         "summary": "Search users by parameters",
+        "tags": [
+          "usuarios"
+        ],
         "responses": {
           "200": {
             "description": "A list of users matching the search criteria."
@@ -98,6 +192,9 @@
     "/usuarios/login": {
       "post": {
         "summary": "User login",
+        "tags": [
+          "usuarios"
+        ],
         "responses": {
           "200": {
             "description": "User logged in."
@@ -108,6 +205,32 @@
     "/sintomas": {
       "post": {
         "summary": "Create a new symptom",
+        "tags": [
+          "sintomas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string",
+                    "example": "Fiebre alta"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "activo"
+                  }
+                },
+                "required": [
+                  "descripcion",
+                  "estado"
+                ]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Symptom created."
@@ -116,6 +239,9 @@
       },
       "get": {
         "summary": "Get all symptoms",
+        "tags": [
+          "sintomas"
+        ],
         "responses": {
           "200": {
             "description": "A list of symptoms."
@@ -126,6 +252,9 @@
     "/sintomas/{id}": {
       "get": {
         "summary": "Get a symptom by ID",
+        "tags": [
+          "sintomas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -144,16 +273,43 @@
       },
       "put": {
         "summary": "Update a symptom by ID",
+        "tags": [
+          "sintomas"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string",
+                    "example": "Fiebre moderada"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["descripcion", "estado"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Symptom updated."
@@ -162,6 +318,9 @@
       },
       "delete": {
         "summary": "Delete a symptom by ID",
+        "tags": [
+          "sintomas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -182,6 +341,9 @@
     "/sintomas/search": {
       "post": {
         "summary": "Search symptoms by parameters",
+        "tags": [
+          "sintomas"
+        ],
         "responses": {
           "200": {
             "description": "A list of symptoms matching the search criteria."
@@ -192,6 +354,42 @@
     "/consultaSintomas": {
       "post": {
         "summary": "Create a new symptom consultation",
+        "tags": [
+          "consultaSintomas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha_hora": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-13T08:31:23.854Z"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "pendiente"
+                  },
+                  "consulta_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "sintoma_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "usuario_creacion": {
+                    "type": "string",
+                    "example": "admin"
+                  }
+                },
+                "required": ["fecha_hora", "estado", "consulta_id", "sintoma_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Symptom consultation created."
@@ -200,6 +398,9 @@
       },
       "get": {
         "summary": "Get all symptom consultations",
+        "tags": [
+          "consultaSintomas"
+        ],
         "responses": {
           "200": {
             "description": "A list of symptom consultations."
@@ -210,6 +411,9 @@
     "/consultaSintomas/{id}": {
       "get": {
         "summary": "Get a symptom consultation by ID",
+        "tags": [
+          "consultaSintomas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -228,16 +432,52 @@
       },
       "put": {
         "summary": "Update a symptom consultation by ID",
+        "tags": [
+          "consultaSintomas"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha_hora": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-14T08:31:23.854Z"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "completada"
+                  },
+                  "consulta_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "sintoma_id": {
+                    "type": "integer",
+                    "example": 3
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["fecha_hora", "estado", "consulta_id", "sintoma_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Symptom consultation updated."
@@ -246,6 +486,9 @@
       },
       "delete": {
         "summary": "Delete a symptom consultation by ID",
+        "tags": [
+          "consultaSintomas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -266,6 +509,9 @@
     "/consultaSintomas/search": {
       "post": {
         "summary": "Search symptom consultations by parameters",
+        "tags": [
+          "consultaSintomas"
+        ],
         "responses": {
           "200": {
             "description": "A list of symptom consultations matching the search criteria."
@@ -276,6 +522,49 @@
     "/institucionesMedicas": {
       "post": {
         "summary": "Create a new medical institution",
+        "tags": [
+          "institucionesMedicas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Hospital General"
+                  },
+                  "direccion": {
+                    "type": "string",
+                    "example": "Av. Principal 123"
+                  },
+                  "telefono": {
+                    "type": "string",
+                    "example": "0987654321"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "activo"
+                  },
+                  "coordenada_x": {
+                    "type": "string",
+                    "example": "-0.180653"
+                  },
+                  "coordenada_y": {
+                    "type": "string",
+                    "example": "-78.467838"
+                  },
+                  "usuario_creacion": {
+                    "type": "string",
+                    "example": "admin"
+                  }
+                },
+                "required": ["nombre", "direccion", "telefono", "estado"]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Medical institution created."
@@ -284,6 +573,9 @@
       },
       "get": {
         "summary": "Get all medical institutions",
+        "tags": [
+          "institucionesMedicas"
+        ],
         "responses": {
           "200": {
             "description": "A list of medical institutions."
@@ -294,6 +586,9 @@
     "/institucionesMedicas/{id}": {
       "get": {
         "summary": "Get a medical institution by ID",
+        "tags": [
+          "institucionesMedicas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -312,16 +607,59 @@
       },
       "put": {
         "summary": "Update a medical institution by ID",
+        "tags": [
+          "institucionesMedicas"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Hospital General Actualizado"
+                  },
+                  "direccion": {
+                    "type": "string",
+                    "example": "Av. Nueva 456"
+                  },
+                  "telefono": {
+                    "type": "string",
+                    "example": "0987654322"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "coordenada_x": {
+                    "type": "string",
+                    "example": "-0.180653"
+                  },
+                  "coordenada_y": {
+                    "type": "string",
+                    "example": "-78.467838"
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["nombre", "direccion", "telefono", "estado"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Medical institution updated."
@@ -330,6 +668,9 @@
       },
       "delete": {
         "summary": "Delete a medical institution by ID",
+        "tags": [
+          "institucionesMedicas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -350,6 +691,9 @@
     "/institucionesMedicas/search": {
       "post": {
         "summary": "Search medical institutions by parameters",
+        "tags": [
+          "institucionesMedicas"
+        ],
         "responses": {
           "200": {
             "description": "A list of medical institutions matching the search criteria."
@@ -360,6 +704,49 @@
     "/medicos": {
       "post": {
         "summary": "Create a new doctor",
+        "tags": [
+          "medicos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Dr. Juan Perez"
+                  },
+                  "especialidad": {
+                    "type": "string",
+                    "example": "Cardiología"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "juan.perez@hospital.com"
+                  },
+                  "telefono": {
+                    "type": "string",
+                    "example": "0987654321"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "activo"
+                  },
+                  "institucion_medica_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_creacion": {
+                    "type": "string",
+                    "example": "admin"
+                  }
+                },
+                "required": ["nombre", "especialidad", "email", "telefono", "estado", "institucion_medica_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Doctor created."
@@ -368,6 +755,9 @@
       },
       "get": {
         "summary": "Get all doctors",
+        "tags": [
+          "medicos"
+        ],
         "responses": {
           "200": {
             "description": "A list of doctors."
@@ -378,6 +768,9 @@
     "/medicos/{id}": {
       "get": {
         "summary": "Get a doctor by ID",
+        "tags": [
+          "medicos"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -396,16 +789,59 @@
       },
       "put": {
         "summary": "Update a doctor by ID",
+        "tags": [
+          "medicos"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Dr. Juan Perez Actualizado"
+                  },
+                  "especialidad": {
+                    "type": "string",
+                    "example": "Neurología"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "juan.perez.updated@hospital.com"
+                  },
+                  "telefono": {
+                    "type": "string",
+                    "example": "0987654322"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "institucion_medica_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["nombre", "especialidad", "email", "telefono", "estado", "institucion_medica_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Doctor updated."
@@ -414,6 +850,9 @@
       },
       "delete": {
         "summary": "Delete a doctor by ID",
+        "tags": [
+          "medicos"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -434,6 +873,9 @@
     "/medicos/search": {
       "post": {
         "summary": "Search doctors by parameters",
+        "tags": [
+          "medicos"
+        ],
         "responses": {
           "200": {
             "description": "A list of doctors matching the search criteria."
@@ -444,6 +886,38 @@
     "/citas": {
       "post": {
         "summary": "Create a new appointment",
+        "tags": [
+          "citas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha_hora": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-13T08:31:23.854Z"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "pendiente"
+                  },
+                  "medico_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                },
+                "required": ["fecha_hora", "estado", "medico_id", "usuario_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Appointment created."
@@ -452,6 +926,9 @@
       },
       "get": {
         "summary": "Get all appointments",
+        "tags": [
+          "citas"
+        ],
         "responses": {
           "200": {
             "description": "A list of appointments."
@@ -462,6 +939,9 @@
     "/citas/{id}": {
       "get": {
         "summary": "Get an appointment by ID",
+        "tags": [
+          "citas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -480,16 +960,52 @@
       },
       "put": {
         "summary": "Update an appointment by ID",
+        "tags": [
+          "citas"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha_hora": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-14T08:31:23.854Z"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "completada"
+                  },
+                  "medico_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["fecha_hora", "estado", "medico_id", "usuario_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Appointment updated."
@@ -498,6 +1014,9 @@
       },
       "delete": {
         "summary": "Delete an appointment by ID",
+        "tags": [
+          "citas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -518,6 +1037,9 @@
     "/citas/search": {
       "post": {
         "summary": "Search appointments by parameters",
+        "tags": [
+          "citas"
+        ],
         "responses": {
           "200": {
             "description": "A list of appointments matching the search criteria."
@@ -528,6 +1050,9 @@
     "/consultasAuditorias": {
       "post": {
         "summary": "Create a new audit consultation",
+        "tags": [
+          "consultasAuditorias"
+        ],
         "responses": {
           "201": {
             "description": "Audit consultation created."
@@ -536,6 +1061,9 @@
       },
       "get": {
         "summary": "Get all audit consultations",
+        "tags": [
+          "consultasAuditorias"
+        ],
         "responses": {
           "200": {
             "description": "A list of audit consultations."
@@ -546,6 +1074,9 @@
     "/consultasAuditorias/{id}": {
       "get": {
         "summary": "Get an audit consultation by ID",
+        "tags": [
+          "consultasAuditorias"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -564,19 +1095,54 @@
       },
       "put": {
         "summary": "Update an audit consultation by ID",
+        "tags": [
+          "consultasAuditorias"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Audit consultation updated."
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string",
+                    "example": "Auditoría de consulta del 2024-08-13 Actualizada"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "consulta_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "auditor2"
+                  }
+                },
+                "required": [
+                  "descripcion",
+                  "estado",
+                  "consulta_id"
+                ]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Audit consultation updated."
+            }
           }
         }
       }
@@ -584,6 +1150,9 @@
     "/consultasAuditorias/search": {
       "post": {
         "summary": "Search audit consultations by parameters",
+        "tags": [
+          "consultasAuditorias"
+        ],
         "responses": {
           "200": {
             "description": "A list of audit consultations matching the search criteria."
@@ -591,9 +1160,64 @@
         }
       }
     },
-    "/consultas": {
+        "/consultas": {
       "post": {
         "summary": "Create a new consultation",
+        "tags": [
+          "consultas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha_hora": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-13T08:31:23.854Z"
+                  },
+                  "descripcion": {
+                    "type": "string",
+                    "example": "Consulta por dolor de cabeza"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "completada"
+                  },
+                  "medico_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "cita_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_creacion": {
+                    "type": "string",
+                    "example": "admin"
+                  },
+                  "sintomas": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": ["dolor de cabeza", "fiebre"]
+                  },
+                  "documento": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": ["fecha_hora", "descripcion", "estado", "medico_id", "usuario_id", "cita_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Consultation created."
@@ -602,6 +1226,9 @@
       },
       "get": {
         "summary": "Get all consultations",
+        "tags": [
+          "consultas"
+        ],
         "responses": {
           "200": {
             "description": "A list of consultations."
@@ -612,6 +1239,9 @@
     "/consultas/{id}": {
       "get": {
         "summary": "Get a consultation by ID",
+        "tags": [
+          "consultas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -630,16 +1260,56 @@
       },
       "put": {
         "summary": "Update a consultation by ID",
+        "tags": [
+          "consultas"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha_hora": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-14T08:31:23.854Z"
+                  },
+                  "descripcion": {
+                    "type": "string",
+                    "example": "Consulta actualizada por dolor de cabeza"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "completada"
+                  },
+                  "medico_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["fecha_hora", "descripcion", "estado", "medico_id", "usuario_id"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Consultation updated."
@@ -648,6 +1318,9 @@
       },
       "delete": {
         "summary": "Delete a consultation by ID",
+        "tags": [
+          "consultas"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -668,6 +1341,9 @@
     "/consultas/search": {
       "post": {
         "summary": "Search consultations by parameters",
+        "tags": [
+          "consultas"
+        ],
         "responses": {
           "200": {
             "description": "A list of consultations matching the search criteria."
@@ -678,6 +1354,9 @@
     "/parametrosCab": {
       "post": {
         "summary": "Create a new parameter header",
+        "tags": [
+          "parametrosCab"
+        ],
         "responses": {
           "201": {
             "description": "Parameter header created."
@@ -686,6 +1365,9 @@
       },
       "get": {
         "summary": "Get all parameter headers",
+        "tags": [
+          "parametrosCab"
+        ],
         "responses": {
           "200": {
             "description": "A list of parameter headers."
@@ -696,6 +1378,9 @@
     "/parametrosCab/{id}": {
       "get": {
         "summary": "Get a parameter header by ID",
+        "tags": [
+          "parametrosCab"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -714,24 +1399,57 @@
       },
       "put": {
         "summary": "Update a parameter header by ID",
+        "tags": [
+          "parametrosCab"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Parameter header updated."
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string",
+                    "example": "Parámetro de Prueba Actualizado"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": [
+                  "descripcion",
+                  "estado"
+                ]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Parameter header updated."
+            }
           }
         }
       },
       "delete": {
         "summary": "Delete a parameter header by ID",
+        "tags": [
+          "parametrosCab"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -752,6 +1470,9 @@
     "/parametrosDet": {
       "post": {
         "summary": "Create a new parameter detail",
+        "tags": [
+          "parametrosDet"
+        ],
         "responses": {
           "201": {
             "description": "Parameter detail created."
@@ -760,6 +1481,9 @@
       },
       "get": {
         "summary": "Get all parameter details",
+        "tags": [
+          "parametrosDet"
+        ],
         "responses": {
           "200": {
             "description": "A list of parameter details."
@@ -770,6 +1494,9 @@
     "/parametrosDet/{id}": {
       "get": {
         "summary": "Get a parameter detail by ID",
+        "tags": [
+          "parametrosDet"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -788,24 +1515,62 @@
       },
       "put": {
         "summary": "Update a parameter detail by ID",
+        "tags": [
+          "parametrosDet"
+        ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Parameter detail updated."
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "parametro_cab_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "clave": {
+                    "type": "string",
+                    "example": "clave_prueba_actualizada"
+                  },
+                  "valor": {
+                    "type": "string",
+                    "example": "valor_prueba_actualizado"
+                  },
+                  "estado": {
+                    "type": "string",
+                    "example": "inactivo"
+                  },
+                  "usuario_modificacion": {
+                    "type": "string",
+                    "example": "admin2"
+                  }
+                },
+                "required": ["parametro_cab_id", "clave", "valor", "estado"]
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Parameter detail updated."
+            }
           }
         }
       },
       "delete": {
         "summary": "Delete a parameter detail by ID",
+        "tags": [
+          "parametrosDet"
+        ],
         "parameters": [
           {
             "name": "id",
