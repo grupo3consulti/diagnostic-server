@@ -6,8 +6,6 @@ import resultadoExamenRepository from '../repositories/resultadoExamenRepository
 import consultaEnfermedadRepository from '../repositories/consultaEnfermedadRepository';
 import MessageService from './messageService';
 import IAService from './iAService';
-import fs from 'fs';
-import pdf from 'pdf-parse';
 import enfermedadRepository from '../repositories/enfermedadRepository';
 import consultaAuditoriaRepository from '../repositories/consultaAuditoriaRepository';
 import UtilService from './utilService';
@@ -268,12 +266,14 @@ class ConsultaService {
       const resultadoExamen = await resultadoExamenRepository.findByParams({ consulta_id });
       const consultaSintomas = await consultaSintomaRepository.findByParams({ consulta_id });
       const consultaEnfermedad = await consultaEnfermedadRepository.findByParams({ consulta_id });
+      const consultaAuditoria = await consultaAuditoriaRepository.findByParams({ consulta_id });
 
       return {
         consulta,
         resultadoExamen,
         consultaSintomas,
-        consultaEnfermedad
+        consultaEnfermedad,
+        consultaAuditoria
       };
     } catch (error: any) {
       throw new Error(error.message);
