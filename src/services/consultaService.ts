@@ -96,7 +96,7 @@ class ConsultaService {
 
       const sintomasArray = data.sintomas.map((sintoma: { id_sintoma: number }) => ({
         consulta_id: consulta.id_consulta,
-        síntoma_id: sintoma.id_sintoma,
+        sintoma_id: sintoma.id_sintoma,
         estado: 'activo',
         usr_creacion: 'system',
       }));
