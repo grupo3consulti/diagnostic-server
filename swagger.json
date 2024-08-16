@@ -2,12 +2,12 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Diagnostic Server API",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "API documentation for the Diagnostic Server"
   },
   "servers": [
     {
-      "url": "http://localhost:3000/diagnostic"
+      "url": "https://diagnostic-iva4.onrender.com/diagnostic"
     }
   ],
   "paths": {
