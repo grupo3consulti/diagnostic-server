@@ -7,6 +7,7 @@ import swaggerDocument from '../swagger.json';
 import enviroment  from './config/enviroment';
 import path from "path";
 import cors from 'cors';
+import morgan from 'morgan';
 
 require('../scripts/crons/cron');
 
@@ -18,6 +19,8 @@ const app = express();
 app.use(cors( {
             origin: '*', allowedHeaders: '*', methods: '*'
             }));
+
+app.use(morgan('combined'));
 
 app.use(express.json());
 app.use('/diagnostic', routes);
