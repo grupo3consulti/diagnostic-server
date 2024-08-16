@@ -3341,7 +3341,7 @@
             "description": ""
           }
         },
-        "tags": ["consulta"],
+        "tags": ["consultas"],
         "description": "Crear consulta",
         "operationId": "crearConsulta",
         "summary": "Crear consulta"
