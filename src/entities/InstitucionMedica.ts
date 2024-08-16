@@ -4,8 +4,8 @@ import sequelize from '../config/database';
 interface InstitucionMedicaAttributes {
   id_institucion_medica: number;
   nombre: string;
-  dirección?: string;
-  teléfono?: string;
+  direccion?: string;
+  telefono?: string;
   estado?: string;
   usr_creacion?: string;
   usr_modificacion?: string;
@@ -20,8 +20,8 @@ interface InstitucionMedicaCreationAttributes extends Optional<InstitucionMedica
 class InstitucionMedica extends Model<InstitucionMedicaAttributes, InstitucionMedicaCreationAttributes> implements InstitucionMedicaAttributes {
   public id_institucion_medica!: number;
   public nombre!: string;
-  public dirección?: string;
-  public teléfono?: string;
+  public direccion?: string;
+  public telefono?: string;
   public estado?: string;
   public usr_creacion?: string;
   public usr_modificacion?: string;
@@ -41,11 +41,13 @@ InstitucionMedica.init({
     type: DataTypes.STRING(100),
     allowNull: false,
   },
-  dirección: {
+  direccion: {
     type: DataTypes.STRING(255),
+    field: 'dirección',
   },
-  teléfono: {
+  telefono: {
     type: DataTypes.STRING(20),
+    field: 'teléfono',
   },
   estado: {
     type: DataTypes.STRING(50),

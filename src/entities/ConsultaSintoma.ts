@@ -3,7 +3,7 @@ import sequelize from '../config/database';
 
 interface ConsultaSintomaAttributes {
   consulta_id: number;
-  síntoma_id: number;
+  sintoma_id: number;
   estado?: string;
   usr_creacion?: string;
   usr_modificacion?: string;
@@ -15,7 +15,7 @@ interface ConsultaSintomaCreationAttributes extends Optional<ConsultaSintomaAttr
 
 class ConsultaSintoma extends Model<ConsultaSintomaAttributes, ConsultaSintomaCreationAttributes> implements ConsultaSintomaAttributes {
   public consulta_id!: number;
-  public síntoma_id!: number;
+  public sintoma_id!: number;
   public estado?: string;
   public usr_creacion?: string;
   public usr_modificacion?: string;
@@ -32,13 +32,14 @@ ConsultaSintoma.init({
       key: 'id_consulta',
     },
   },
-  síntoma_id: {
+  sintoma_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     references: {
       model: 'síntoma',
       key: 'id_síntoma',
     },
+    field: 'síntoma_id',
   },
   estado: {
     type: DataTypes.STRING(50),

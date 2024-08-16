@@ -5,7 +5,7 @@ interface ConsultaAttributes {
   id_consulta: number;
   cita_id: number;
   fecha_hora: Date;
-  descripción?: string;
+  descripcion?: string;
   documento?: string;
   usuario_id?: number;
   medico_id?: number;
@@ -22,7 +22,7 @@ class Consulta extends Model<ConsultaAttributes, ConsultaCreationAttributes> imp
   public id_consulta!: number;
   public cita_id!: number;
   public fecha_hora!: Date;
-  public descripción?: string;
+  public descripcion?: string;
   public documento?: string;
   public usuario_id?: number;
   public medico_id?: number;
@@ -50,8 +50,9 @@ Consulta.init({
     type: DataTypes.DATE,
     allowNull: false,
   },
-  descripción: {
+  descripcion: {
     type: DataTypes.TEXT,
+    field: 'descripción',
   },
   documento: {
     type: DataTypes.STRING(255),

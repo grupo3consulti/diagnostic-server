@@ -7,8 +7,8 @@ interface UsuarioAttributes {
   nombre: string;
   email: string;
   contraseña: string;
-  teléfono?: string;
-  dirección?: string;
+  telefono?: string;
+  direccion?: string;
   estado?: string;
   usr_creacion?: string;
   usr_modificacion?: string;
@@ -24,8 +24,8 @@ class Usuario extends Model<UsuarioAttributes, UsuarioCreationAttributes> implem
   public nombre!: string;
   public email!: string;
   public contraseña!: string;
-  public teléfono?: string;
-  public dirección?: string;
+  public telefono?: string;
+  public direccion?: string;
   public estado?: string;
   public usr_creacion?: string;
   public usr_modificacion?: string;
@@ -56,11 +56,13 @@ Usuario.init({
     type: DataTypes.STRING(100),
     allowNull: false,
   },
-  teléfono: {
+  telefono: {
     type: DataTypes.STRING(20),
+    field: 'teléfono',
   },
-  dirección: {
+  direccion: {
     type: DataTypes.STRING(255),
+    field: 'dirección',
   },
   estado: {
     type: DataTypes.STRING(50),

@@ -3,7 +3,7 @@ import sequelize from '../config/database';
 
 interface SintomaAttributes {
   id_sintoma: number;
-  descripción: string;
+  descripcion: string;
   estado?: string;
   usr_creacion?: string;
   usr_modificacion?: string;
@@ -15,7 +15,7 @@ interface SintomaCreationAttributes extends Optional<SintomaAttributes, 'id_sint
 
 class Sintoma extends Model<SintomaAttributes, SintomaCreationAttributes> implements SintomaAttributes {
   public id_sintoma!: number;
-  public descripción!: string;
+  public descripcion!: string;
   public estado?: string;
   public usr_creacion?: string;
   public usr_modificacion?: string;
@@ -29,9 +29,10 @@ Sintoma.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  descripción: {
+  descripcion: {
     type: DataTypes.TEXT,
     allowNull: false,
+    field: 'descripción',
   },
   estado: {
     type: DataTypes.STRING(50),

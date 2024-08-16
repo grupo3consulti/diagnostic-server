@@ -1351,6 +1351,75 @@
         }
       }
     },
+    "/consultas/details/{cita_id}": {
+    "get": {
+      "summary": "Get consultation details by cita_id",
+      "tags": [
+        "consultas"
+      ],
+      "parameters": [
+        {
+          "name": "cita_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          },
+          "description": "ID de la cita"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Consultation details retrieved successfully",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "consulta": {
+                    "type": "object"
+                  },
+                  "resultadoExamen": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "consultaSintomas": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "consultaEnfermedad": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
     "/parametrosCab": {
       "post": {
         "summary": "Create a new parameter header",
