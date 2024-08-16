@@ -1,6 +1,6 @@
 ### Node template
-.vscode
-.idea
+.vscode/
+.idea/
 # Logs
 logs
 *.log
