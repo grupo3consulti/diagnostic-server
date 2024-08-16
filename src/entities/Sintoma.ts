@@ -28,6 +28,7 @@ Sintoma.init({
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+    field: 'id_síntoma',
   },
   descripcion: {
     type: DataTypes.TEXT,
