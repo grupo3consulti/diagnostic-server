@@ -40,6 +40,7 @@ class UsuarioService {
         const tokenObj = {
             id: 0,
             email: "",
+            nombre : "",
             rol: "",
             medico_id: 0
         };
@@ -54,6 +55,7 @@ class UsuarioService {
             tokenObj.id = usuario.id_usuario;
             tokenObj.email = usuario.email;
             tokenObj.rol = usuario.rol;
+            tokenObj.nombre = usuario.nombre;
             if (usuario.rol === 'MEDICO') {
                 const medidoObj = await medicoUsuarioService.getOneMedicoUsuarioByParams({usuario_id: usuario.id_usuario});
                 if (medidoObj) {
