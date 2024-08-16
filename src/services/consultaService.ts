@@ -64,11 +64,23 @@ class ConsultaService {
     }
   }
 
+  /**
+   * 
+   * Método que consume IA para crear una consulta, basa en un resultado de examen en PDF
+   * 
+   * @param data
+   * @returns Consulta
+   * @description Create a Consulta based on a PDF exam result
+   * @throws Error
+   * 
+   * 
+   **/
+
   async createConsulta(data: any): Promise<Consulta> {
     try {
       const consultaData: ConsultaCreationAttributes = {
         fecha_hora: data.fecha_hora,
-        descripción: data.descripcion,
+        descripcion: data.descripcion,
         documento: data.documento,
         usuario_id: data.usuario_id,
         medico_id: data.medico_id,
@@ -231,6 +243,17 @@ class ConsultaService {
   async getAllConsultaBetween(fecha_ini: Date, fecha_fin: Date): Promise<Consulta[]> {
     return await ConsultaRepository.findAllBetween(fecha_ini, fecha_fin);
   }
+
+/**
+ * Método para obtener los detalles de una consulta por cita_id
+ * 
+ * @param cita_id
+ * @returns Consulta details
+ * @description Get Consulta details by cita_id
+ * @throws Error
+ * 
+ * 
+**/
 
   async getConsultaDetailsByCitaId(cita_id: number): Promise<any> {
     try {

@@ -14,9 +14,9 @@ class ConsultaSintomaRepository {
     return await ConsultaSintoma.findAll();
   }
 
-  async findById(consulta_id: number, síntoma_id: number): Promise<ConsultaSintoma | null> {
+  async findById(consulta_id: number, sintoma_id: number): Promise<ConsultaSintoma | null> {
     return await ConsultaSintoma.findOne({
-      where: { consulta_id, síntoma_id }
+      where: { consulta_id, sintoma_id }
     });
   }
 
@@ -36,16 +36,16 @@ class ConsultaSintomaRepository {
     });
   }
 
-  async update(consulta_id: number, síntoma_id: number, updates: Partial<ConsultaSintomaCreationAttributes>): Promise<[number, ConsultaSintoma[]]> {
+  async update(consulta_id: number, sintoma_id: number, updates: Partial<ConsultaSintomaCreationAttributes>): Promise<[number, ConsultaSintoma[]]> {
     return await ConsultaSintoma.update(updates, {
-      where: { consulta_id, síntoma_id },
+      where: { consulta_id, sintoma_id },
       returning: true
     });
   }
 
-  async delete(consulta_id: number, síntoma_id: number): Promise<[number, ConsultaSintoma[]]> {
+  async delete(consulta_id: number, sintoma_id: number): Promise<[number, ConsultaSintoma[]]> {
     return await ConsultaSintoma.update({ estado: 'Eliminado' }, {
-      where: { consulta_id, síntoma_id },
+      where: { consulta_id, sintoma_id },
       returning: true
     });
   }

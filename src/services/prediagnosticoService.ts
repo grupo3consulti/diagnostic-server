@@ -3,8 +3,28 @@ import MessageService from './messageService';
 import MedicoService from './medicoService';
 import parametroDetService from './parametroDetService';
 import InstitucionMedicaService from './institucionMedicaService';
+import PdfParse from 'pdf-parse';
 import UtilService from './utilService';
+
 class PrediagnosticoService {
+
+  private async extractTextFromPDF(file: any): Promise<string> {
+    const pdfData = await PdfParse(file.buffer);
+    
+    return pdfData.text;
+  }
+
+  /**
+   * 
+   * Método que genera un prediagnóstico basado en los síntomas proporcionados mediante IA.
+   * 
+   * @param nombre 
+   * @param sintomas 
+   * @param archivo 
+   * @param coordenada_x 
+   * @param coordenada_y 
+   * @returns object
+   */
 
   async generarPrediagnostico(nombre: string, sintomas: string[], archivo?: any, coordenada_x?: string, coordenada_y?: string): Promise<any> {
     
@@ -61,7 +81,7 @@ class PrediagnosticoService {
               nombre: medico.dataValues.nombre,
               especialidad: medico.dataValues.especialidad,
               email: medico.dataValues.email,
-              telefono: medico.dataValues.teléfono,
+              telefono: medico.dataValues.telefono,
               estado: medico.dataValues.estado,
               institucion: {
                 id_institucion_medica: institucion.dataValues.id_institucion_medica,

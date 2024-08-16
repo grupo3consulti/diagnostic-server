@@ -6,7 +6,7 @@ interface MedicoAttributes {
   nombre: string;
   especialidad?: string;
   email: string;
-  teléfono?: string;
+  telefono?: string;
   institucion_medica_id?: number;
   estado?: string;
   usr_creacion?: string;
@@ -22,7 +22,7 @@ class Medico extends Model<MedicoAttributes, MedicoCreationAttributes> implement
   public nombre!: string;
   public especialidad?: string;
   public email!: string;
-  public teléfono?: string;
+  public telefono?: string;
   public institucion_medica_id?: number;
   public estado?: string;
   public usr_creacion?: string;
@@ -49,8 +49,9 @@ Medico.init({
     allowNull: false,
     unique: true,
   },
-  teléfono: {
+  telefono: {
     type: DataTypes.STRING(20),
+    field: 'teléfono',
   },
   institucion_medica_id: {
     type: DataTypes.INTEGER,
