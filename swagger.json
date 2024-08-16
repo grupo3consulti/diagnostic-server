@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/diagnostic"
+      "url": "https://diagnostic-iva4.onrender.com/diagnostic"
     }
   ],
   "paths": {
