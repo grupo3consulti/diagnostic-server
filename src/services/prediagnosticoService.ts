@@ -4,6 +4,7 @@ import MedicoService from './medicoService';
 import parametroDetService from './parametroDetService';
 import InstitucionMedicaService from './institucionMedicaService';
 import PdfParse from 'pdf-parse';
+import UtilService from './utilService';
 
 class PrediagnosticoService {
 
@@ -33,7 +34,7 @@ class PrediagnosticoService {
     ];
 
     if (archivo) {
-      const pdfContent = await this.extractTextFromPDF(archivo);
+      const pdfContent = await UtilService.extractTextFromPDF(archivo);
       initialMessages.push({ role: 'user', content: `El pdf adjunto contiene los resultados de laboratorio: ${pdfContent}` });
     }
 

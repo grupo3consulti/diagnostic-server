@@ -1,10 +1,23 @@
 import { Request, Response } from 'express';
 import ConsultaService from '../services/consultaService';
+import UtilService from '../services/utilService';
 
 class ConsultaController {
   async createConsulta(req: Request, res: Response): Promise<Response> {
     try {
-      const consulta = await ConsultaService.createConsulta(req.body);
+    var {sintomas} = req.body;
+    const archivo = req.file
+   
+    if (!sintomas) {
+      return res.status(400).json({ error: 'Los síntomas son requeridos' });;
+    }
+
+    if(UtilService.isValidJSON(sintomas)){
+      sintomas = JSON.parse(sintomas)
+    }else{
+      sintomas = [sintomas]
+    }
+      const consulta = await ConsultaService.createConsulta({...req.body, file: archivo, sintomas: sintomas});
       return res.status(201).json(consulta);
     } catch (error:any) {
       return res.status(500).json({ error: error.message });

@@ -3299,6 +3299,53 @@
         "operationId": "generarprediagnostico",
         "summary": "generarPrediagnostico"
       }
+    },
+    "/consultas": {
+      "post": {
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "descripcion",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "fecha_hora",
+            "type": "string"
+          },
+          {
+            "format": "binary",
+            "in": "formData",
+            "name": "filePath",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "medico_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "sintomas",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "usuario_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["consulta"],
+        "description": "Crear consulta",
+        "operationId": "crearConsulta",
+        "summary": "Crear consulta"
+      }
     }
   }
 }
