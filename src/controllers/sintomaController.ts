@@ -68,6 +68,24 @@ class SintomaController {
       return res.status(500).json({ error: error.message });
     }
   }
+
+  async getSintomasGeneradosIa(req: Request, res: Response): Promise<Response> {
+    try {
+      const sintomas = await SintomaService.getSintomasGeneradosIa();
+      return res.status(200).json(sintomas);
+    } catch (error: any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+
+  async getAllSintomasGeneradosIaFirst(req: Request, res: Response): Promise<Response> {
+    try {
+      const sintomas = await SintomaService.getAllSintomasGeneradosIaFirst();
+      return res.status(200).json(sintomas);
+    } catch (error: any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
 }
 
 export default new SintomaController();

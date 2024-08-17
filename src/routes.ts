@@ -33,7 +33,7 @@ router.post('/usuarios/login', usuarioController.login);
 
 // Rutas para síntomas
 router.post('/sintomas', sintomaController.createSintoma);
-router.get('/sintomas', sintomaController.getAllSintomas);
+router.get('/sintomas', sintomaController.getAllSintomasGeneradosIaFirst);
 router.get('/sintomas/:id', sintomaController.getSintomaById);
 router.post('/sintomas/search', sintomaController.getSintomasByParams);
 router.put('/sintomas/:id', sintomaController.updateSintoma);

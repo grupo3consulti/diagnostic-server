@@ -10,6 +10,14 @@ import ciudadService from './ciudadService';
 import Caso from '../entities/Caso';
 import casoService from './casoService';
 import enviroment from '../config/enviroment';
+import iAService from './iAService';
+import messageService from './messageService';
+import enfermedadService from './enfermedadService';
+import sintomaService from './sintomaService';
+import enfermedadSintomaService from './enfermedadSintomaService';
+import parametroCabService from './parametroCabService';
+import ParametroCab from '../entities/ParametroCab';
+import parametroDetService from './parametroDetService';
 
 class ExecutableTasks {
     async analizarEnfermedadesIngresadas(fechaCorte?: Date) {
@@ -96,6 +104,130 @@ class ExecutableTasks {
         console.log('Se finaliza la tarea de analisis de enfermedades ingresadas');
     }
     
+    async generarEnfermedadesEnTendencia(ubicacion?: string)
+    {
+        var countParDetnuevos = 0
+        try {
+            console.log('Ejecutando tarea de generacion de enfermedades');
+
+            if(!ubicacion){
+                ubicacion = 'Ecuador'
+            }
+            var parametroCab = await parametroCabService.findOneByParams({descripcion: 'ENFERMEDADES_GENERADAS_POR_IA', estado:'activo'})
+
+            if(!parametroCab)
+            {
+                parametroCab = await parametroCabService.createParametroCab({descripcion: 'ENFERMEDADES_GENERADAS_POR_IA', estado:'activo'})
+            }
+            if(!parametroCab)
+            {
+                throw new Error('No se pudo obtener el parametro cabecera')
+            }
+
+            var parametrosDet = await parametroDetService.getParametroDetsByCabId(parametroCab.id_parametro_cab)
+
+            for (const parametroDet of parametrosDet) {
+                await parametroDetService.deleteParametroDet(parametroDet.id_parametro_det)
+            }
+
+            const mensaje: { role: 'system' | 'user'; content: string }[] = [
+                { role: 'system', content: 'Eres un experto epidemiologo.' },
+                { role: 'user', content: 'Cuales son las enfermedades que actualmente estan en tendencia en '+ubicacion }];
+
+            const outputFormat = {
+                type: "json_schema",
+                json_schema: {
+                    name: "enfermedades_tendencia",
+                    schema: {
+                        type: "object",
+                        properties: {
+                            enfermedades: {
+                                type: "array",
+                                items: {
+                                    type: "object",
+                                    properties: {
+                                        nombre_enfermedad: { type: "string" },
+                                        tipo_enfermedad: { type: "string" },
+                                        sintomas: {
+                                            type: "array",
+                                            items: {
+                                                type: "string"
+                                            }
+                                        }
+                                    },
+                                    required: ["nombre_enfermedad", "tipo_enfermedad", "sintomas"],
+                                    additionalProperties: false
+                                }
+                            }
+                        },
+                        required: ["enfermedades"],
+                        additionalProperties: false
+                    },
+                    strict: true
+                }
+            };
+
+            const response = await iAService.getStrucutredOutput(await messageService.createMessages(mensaje), outputFormat);
+            
+            if(UtilService.isValidJSON(response)){
+                var enfermedades = JSON.parse(response)
+            }
+            if(!enfermedades){
+                throw new Error('No se pudo obtener los datos a ingresar')
+            }
+
+            for (const enfermedad_generada of enfermedades.enfermedades) {
+                //Validar si la enferemedad existe
+                var enfermedad = await enfermedadService.findOneByParams({nombre: enfermedad_generada.nombre_enfermedad, estado: 'activo' })
+
+                if(!enfermedad){
+                    enfermedad = await enfermedadService.create({
+                        nombre: enfermedad_generada.nombre_enfermedad, 
+                        tipo: enfermedad_generada.tipo_enfermedad, 
+                        descripcion: enfermedad_generada.nombre_enfermedad,
+                        estado: 'activo',
+                        usr_creacion: 'admin',
+                        usr_modificacion: 'admin' })
+                    
+                    console.log('Se ingresa la nueva enfermedad de manera satisfactoria: '+enfermedad_generada.nombre_enfermedad)
+                }
+
+                if(!enfermedad)
+                {
+                    console.log('No se pudo crear la enfermedad'+enfermedad_generada.nombre_enfermedad)
+                    continue;
+                }
+                for (const sintomas_generados of enfermedad_generada.sintomas) {
+                    var sintomas = await sintomaService.getOneSintomaByParams({descripcion: sintomas_generados, estado: 'activo' })
+
+                    if(!sintomas){
+                        sintomas = await sintomaService.createSintoma({descripcion: sintomas_generados, estado:'activo', usr_creacion: 'admin'})
+                    }
+                    if(!sintomas){
+                        console.log('No se pudo crear la enfermedad'+sintomas_generados)
+                        continue;
+                    }
+
+                    var enfermedadSintoma = await enfermedadSintomaService.findOneByParams({enfermedad_id: enfermedad.id_enfermedad, sintoma_id: sintomas.id_sintoma, estado: 'activo'})
+                    if(!enfermedadSintoma){
+                        enfermedadSintoma = await enfermedadSintomaService.create({enfermedad_id: enfermedad.id_enfermedad, sintoma_id: sintomas.id_sintoma, estado: 'activo'})
+                    }
+                    if(!enfermedadSintoma){
+                        console.log('No se pudo crear la relacion sintoma - enfermedad')
+                        continue;
+                    }
+
+                    await parametroDetService.createParametroDet({parametro_cab_id: parametroCab.id_parametro_cab, clave: 'ENFERMEDAD_SINTOMA_IA', valor: String(enfermedadSintoma.id_enfermedad_sintoma), estado: 'activo'})
+                    countParDetnuevos ++
+                }
+            }
+            console.log('Se generaron '+countParDetnuevos+' nuevos detalles')
+            console.log('Tarea finalizada correctamente :)');
+        } catch (error) {
+            console.log('Ocurrió un error al ejecutar la tarea, detalles: ' + error);
+        }
+        console.log('Se finaliza la tarea de generacion de enfermedades.');
+    }
 }
 
 export default new ExecutableTasks();
