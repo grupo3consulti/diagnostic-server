@@ -116,13 +116,12 @@ class ConsultaService {
         });
         initialMessages.push({role: 'user',
           content: `Genera obligatoriamente solo el json.`});
-      }else{
-        throw new Error('No se ha adjuntado un documento');
       }
 
       const messagesEnfermedad = await MessageService.createMessages(initialMessages);
       const iaResult = await IAService.getIAResponse(messagesEnfermedad);
-      const iaResEnfermedad: iaResponseEnfermedad = await this.convertIAResponseToJson<iaResponseEnfermedad>(iaResult);
+      let resultado = iaResult.match(/\{[^}]+\}/);
+      const iaResEnfermedad: iaResponseEnfermedad = await this.convertIAResponseToJson<iaResponseEnfermedad>(String(resultado));
 
       if (iaResEnfermedad) {
         const enfermedadObj = await enfermedadRepository.findOneByParams({ nombre: iaResEnfermedad.Enfermedad });
@@ -160,20 +159,49 @@ class ConsultaService {
         const pdfContent = await UtilService.extractTextFromPDF(data.file);
         examenMessage.push({
           role: 'user',
-          content: `Analiza el pdf y dame un json sin ningun texto adicional, siguiendo esta estructura: 
+          content: `Analiza el pdf y genera un json sin ningun texto adicional, siguiendo estrictamente la estructura de este ejemplo: 
                       {
-                          aaaaa:"aaaaa",
-                          aaaaa: {
-                              "aaaa": {
-                                  "aaaaa": "aaaaaa",
-                                  "aaaa": "aaaaa",
-                                  "aaa": "aaaa"
-                              }
-                          }
+                          direccion:"Direccion del laboratorio",
+                          director_tecnico: "Nombre del especialista",
+                          edad: "Edad estima del paciente",
+                          fecha_impresion: "",
+                          fecha_ingreso: "",
+                          fecha_naciemiento: "",
+                          fecha_resultado: "",
+                          firmado_electronicamente_por: "Nombre del especialista",
+                          identificacion: "Numero de cedula del paciente",
+                          informe_resultado: {
+                            biometria: {
+                                recuento_globulos_rojos: "Total de globulos rojos",
+                                hemoglobina: "Hemoglobina en la sangre",
+                                hematocrito: "Porcentaje de hematocrito"
+                                },
+                            serologia_reactante_fase_aguda: {
+                                reacciones_febriles_reaccion_widal: {
+                                    tifico_o: "Positivo o Negativo",
+                                    tifico_h: "Positivo o Negativo"
+                                }
+                            },
+                            coprologia: {
+                                citologia_moco_fecal: {
+                                    color: "Color de la muestra",
+                                    consistencia: "Consitencia de la muestra",
+                                    ph: "Valor PH de la muestra"
+                                },
+                            },
+                        },
+                          laboratorio_clinico: "Nombre del laboratorio",
+                          orden_no : "Numero de documento",
+                          ruc: "Ruc del laboratorio",
+                          sexo: "Sexo del paciente",
+                          sucursal: "Direccion del laboratorio",
+                          telefonos: "Telefono del laboratorio",
+                          unicodigo: "Codigo del examen",
+                          validado_por: "Nombre del especialista"
                       }.${pdfContent}.`
           });
         examenMessage.push({role: 'user',
-          content: `Genera obligatoriamente solo el json.`});
+          content: `Genera unicamente solo el json y si algun resultado no se encuentra agrega 'NA' `});
 
         const messagesExamenes = await MessageService.createMessages(examenMessage);
         const iaResultExamenes = await IAService.getIAResponse(messagesExamenes);
@@ -264,7 +292,7 @@ class ConsultaService {
       }
 
       const consulta_id = consulta.id_consulta;
-
+      console.log(consulta_id)
       const resultadoExamen = await resultadoExamenRepository.findByParams({ consulta_id });
       const consultaSintomas = await consultaSintomaRepository.findByParams({ consulta_id });
       const consultaEnfermedad = await consultaEnfermedadRepository.findByParams({ consulta_id });
