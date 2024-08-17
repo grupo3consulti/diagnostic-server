@@ -38,7 +38,7 @@ async function extractJsonFromString(input: string): Promise<any> {
   const jsonEnd = input.lastIndexOf('}') + 1;
 
   if (jsonStart === -1 || jsonEnd === -1) {
-    throw new Error('No JSON found in the input string');
+    throw new Error(input);
   }
 
   const jsonString = input.substring(jsonStart, jsonEnd);
@@ -46,7 +46,7 @@ async function extractJsonFromString(input: string): Promise<any> {
   try {
     return JSON.parse(jsonString);
   } catch (error: any) {
-    throw new Error(`Error parsing JSON: ${error.message}`);
+    throw new Error(error.message);
   }
 }
 
@@ -110,7 +110,9 @@ class ConsultaService {
         const pdfContent = await UtilService.extractTextFromPDF(data.file);
         initialMessages.push({
           role: 'user',
-          content: `El PDF adjunto contiene los resultados de laboratorio: ${pdfContent}. Necesito que me proporciones un JSON con esta estructura: {"Enfermedad": "nombre de la enfermedad", "Descripcion": "descripción de la enfermedad", "Tipo": "tipo de la enfermedad"}. Solo el JSON, sin texto adicional, y respetando exactamente los campos de salida.`
+          content: `El PDF adjunto contiene los resultados de laboratorio: ${pdfContent}. Necesito que me proporciones un 
+          JSON con esta estructura: {"Enfermedad": "nombre de la enfermedad", "Descripcion": "descripción de la enfermedad", 
+          "Tipo": "tipo de la enfermedad"}. Solo el JSON, sin texto adicional, y respetando exactamente los campos de salida.`
         });
         initialMessages.push({role: 'user',
           content: `Genera obligatoriamente solo el json.`});
@@ -120,7 +122,7 @@ class ConsultaService {
 
       const messagesEnfermedad = await MessageService.createMessages(initialMessages);
       const iaResult = await IAService.getIAResponse(messagesEnfermedad);
-      const iaResEnfermedad: iaResponseEnfermedad = await this.convertIAResponseToJson<iaResponseEnfermedad>(iaResult);
+      const iaResEnfermedad = await extractJsonFromString(iaResult);
 
       if (iaResEnfermedad) {
         const enfermedadObj = await enfermedadRepository.findOneByParams({ nombre: iaResEnfermedad.Enfermedad });
@@ -158,20 +160,21 @@ class ConsultaService {
         const pdfContent = await UtilService.extractTextFromPDF(data.file);
         examenMessage.push({
           role: 'user',
-          content: `Analiza el pdf y dame un json sin ningun texto adicional, siguiendo esta estructura: 
+          content: `Analiza el siguiente contenido de un PDF de resultados médicos y devuelve un JSON con la siguiente estructura estricta:
                       {
-                          aaaaa:"aaaaa",
-                          aaaaa: {
-                              "aaaa": {
-                                  "aaaaa": "aaaaaa",
-                                  "aaaa": "aaaaa",
-                                  "aaa": "aaaa"
+                          "Resultados": [
+                              {
+                                  "Examen": "nombre del examen",
+                                  "Resultado": "resultado del examen",
+                                  "Unidades": "unidades del resultado",
+                                  "ValoresReferencia": "valores de referencia"
                               }
-                          }
+                          ]
                       }.${pdfContent}.`
           });
         examenMessage.push({role: 'user',
-          content: `Genera obligatoriamente solo el json.`});
+          content: `Genera obligatoriamente solo el JSON con la estructura especificada.`});
+
 
         const messagesExamenes = await MessageService.createMessages(examenMessage);
         const iaResultExamenes = await IAService.getIAResponse(messagesExamenes);
@@ -190,7 +193,8 @@ class ConsultaService {
 
         const auditoriaMessage: { role: 'system' | 'user'; content: string }[] = [
           { role: 'system', content: 'Eres un asistente médico que ayuda a diagnosticar enfermedades basadas en pdf de examenes.' },
-          { role: 'user', content: `De este pdf: ${pdfContent}, con estos síntomas: ${data.sintomas.map((s: { descripcion: string }) => s.descripcion).join(', ')}, Dame un diagnostico, y recomendaciones.` },
+          { role: 'user', content: `De este pdf: ${pdfContent}, con estos síntomas: ${data.sintomas.map((s: { descripcion: string }) => s.descripcion).join(', ')}, 
+          Dame un diagnostico, y recomendaciones.` },
         ];
 
         const auditoriaMessages = await MessageService.createMessages(auditoriaMessage);

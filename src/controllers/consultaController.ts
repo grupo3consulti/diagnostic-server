@@ -11,6 +11,10 @@ class ConsultaController {
     if (!sintomas) {
       return res.status(400).json({ error: 'Los síntomas son requeridos' });;
     }
+    
+    if(!archivo){
+      return res.status(400).json({ error: 'El archivo es requerido' });
+    }
 
     if(UtilService.isValidJSON(sintomas)){
       sintomas = JSON.parse(sintomas)
