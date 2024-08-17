@@ -7,7 +7,12 @@ class PrediagnosticoController {
   public async generarPrediagnostico(req: Request, res: Response): Promise<void> {
     try {
       var { sintomas, nombre,x,y } = req.body;
-      const archivo = req.file
+      var archivo = null;
+
+      if(req.file){
+        archivo = req.file
+      }
+
      
       if (!sintomas) {
         res.status(400).json({ error: 'Los síntomas son requeridos' });
@@ -27,7 +32,7 @@ class PrediagnosticoController {
       res.status(200).json(resultado);
     } catch (error) {
         log(error);
-      res.status(500).json({ error: 'Error al generar el prediagnóstico' });
+      res.status(500).json({ error: 'Error al generar el prediagnóstico: '+error });
     }
   }
 }
