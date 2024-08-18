@@ -26,6 +26,14 @@ class ParametroCabRepository {
       returning: true,
     });
   }
+
+  async findOneByParams(params: Partial<ParametroCab>): Promise<ParametroCab | null> {
+    return await ParametroCab.findOne({
+      where: {
+        ...params
+      }
+    });
+  }
 }
 
 export default new ParametroCabRepository();

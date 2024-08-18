@@ -22,6 +22,32 @@ class IAService {
     return respuestaIA.choices?.[0]?.message.content?.trim() || '';
     
   }
+
+    async getStrucutredOutput(messages: { role: 'system' | 'user'; content: string }[], response_format: any): Promise<any> {
+        try {
+            const response = await this.openai.chat.completions.create({
+                model: 'gpt-4o-mini',
+                messages,
+                response_format,
+                max_tokens: 500
+            })
+            
+            if (!response.choices[0].message) {
+                throw new Error("No se pudo obtener una respuesta");
+            }
+            
+            const respuesta = response.choices[0].message;
+
+            if (respuesta.content) {
+                return respuesta.content;
+            } else {
+            throw new Error("Se genero una respuesta vacia");
+            }
+            
+        } catch (error) {
+            console.log('Error al obtener la respuesta de OpenAi: ' + error)
+        }
+    }
 }
 
 export default new IAService();

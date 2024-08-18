@@ -21,6 +21,10 @@ class ParametroCabService {
   async deleteParametroCab(id: number): Promise<[number, ParametroCab[]]> {
     return await ParametroCabRepository.delete(id);
   }
+
+  async findOneByParams(params: Partial<ParametroCab>): Promise<ParametroCab | null> {
+    return await ParametroCabRepository.findOneByParams(params);
+  }
 }
 
 export default new ParametroCabService();

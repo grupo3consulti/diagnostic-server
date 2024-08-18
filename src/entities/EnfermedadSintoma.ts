@@ -2,6 +2,7 @@ import { Model, DataTypes, Optional } from 'sequelize';
 import sequelize from '../config/database';
 
 interface EnfermedadSintomaAttributes {
+  id_enfermedad_sintoma: number;
   enfermedad_id: number;
   sintoma_id: number;
   estado?: string;
@@ -11,9 +12,10 @@ interface EnfermedadSintomaAttributes {
   fecha_modificacion: Date;
 }
 
-export interface EnfermedadSintomaCreationAttributes extends Optional<EnfermedadSintomaAttributes, 'fecha_creacion' | 'fecha_modificacion'> {}
+export interface EnfermedadSintomaCreationAttributes extends Optional<EnfermedadSintomaAttributes, 'id_enfermedad_sintoma' | 'fecha_creacion' | 'fecha_modificacion'> {}
 
 class EnfermedadSintoma extends Model<EnfermedadSintomaAttributes, EnfermedadSintomaCreationAttributes> implements EnfermedadSintomaAttributes {
+  public id_enfermedad_sintoma!: number;
   public enfermedad_id!: number;
   public sintoma_id!: number;
   public estado?: string;
@@ -24,6 +26,11 @@ class EnfermedadSintoma extends Model<EnfermedadSintomaAttributes, EnfermedadSin
 }
 
 EnfermedadSintoma.init({
+  id_enfermedad_sintoma: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+  },
   enfermedad_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
